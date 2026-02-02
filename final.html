@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pintig ng Panitikan | Educational Portfolio</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-dark: #3b1a0a;
+      --accent-gold: #f1c40f;
+      --paper-white: #fdfcf0;
+      --deep-red: #8b0000;
+      --soft-peach: #fdf6f0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body { 
+      background: var(--soft-peach);
+      color: #333; 
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                  url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    header h1 { 
+        font-family: 'Great Vibes', cursive; 
+        font-size: 5em; 
+        text-shadow: 3px 3px 6px rgba(0,0,0,0.5); 
+        margin-bottom: 10px;
+    }
+
+    header p { font-family: 'Playfair Display', serif; font-size: 1.4em; font-style: italic; opacity: 0.9; }
+
+    nav { 
+      background: var(--primary-dark); 
+      display: none; 
+      justify-content: center; 
+      position: sticky; 
+      top: 0; 
+      z-index: 1000; 
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    nav button { 
+      background: none; border: none; color: #fff8e7; 
+      padding: 18px 25px; cursor: pointer; font-size: 1rem; transition: 0.3s;
+      font-weight: 500; text-transform: uppercase; letter-spacing: 1px;
+    }
+
+    nav button:hover { color: var(--accent-gold); }
+    nav button.active { border-bottom: 4px solid var(--accent-gold); color: var(--accent-gold); }
+
+    .container { max-width: 1000px; margin: 40px auto; padding: 20px; min-height: 60vh; }
+    
+    .tab-content { display: none; animation: fadeIn 0.8s ease; }
+    .tab-content.active { display: block; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    .card { 
+      background: white; 
+      padding: 45px; 
+      border-radius: 20px; 
+      box-shadow: 0 15px 35px rgba(0,0,0,0.07); 
+      margin-bottom: 30px;
+    }
+
+    .portal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .subject-card {
+      background: white;
+      border-radius: 25px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      transition: 0.4s ease;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .subject-card:hover { transform: translateY(-10px); }
+    .card-img { width: 100%; height: 220px; object-fit: cover; }
+    .card-body { padding: 30px 20px; }
+    .card-body h3 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--primary-dark); }
+
+    h2 { 
+      color: var(--deep-red); 
+      font-family: 'Playfair Display', serif; 
+      font-size: 2.5rem; 
+      margin-bottom: 25px; 
+      text-align: center;
+    }
+
+    .story-text p { margin-bottom: 25px; text-align: justify; text-indent: 50px; font-size: 1.15rem; color: #333; }
+    
+    .tula-text { 
+      text-align: center; 
+      font-style: italic; 
+      white-space: pre-line; 
+      color: #333; 
+      font-family: 'Playfair Display', serif; 
+      font-size: 1.25rem; 
+      background: #fffcf5; 
+      padding: 40px; 
+      border-radius: 15px; 
+      margin: 20px 0;
+      display: none;
+      line-height: 2;
+    }
+    .tula-text.show { display: block; }
+
+    .obra-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+    .obra-item {
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .obra-item img { width: 100%; height: auto; display: block; }
+    .obra-caption {
+      padding: 15px;
+      background: var(--primary-dark);
+      color: white;
+      text-align: center;
+    }
+
+    .author-tag { display: block; text-align: right; font-weight: 600; color: var(--deep-red); margin-top: 20px; }
+
+    .poetry-menu { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
+    .p-btn {
+        background: white; border: 2px solid var(--deep-red); color: var(--deep-red);
+        padding: 8px 20px; border-radius: 30px; cursor: pointer; font-weight: 600;
+    }
+    .p-btn.active { background: var(--deep-red); color: white; }
+
+    .portrait { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 5px solid var(--accent-gold); margin-bottom: 20px; }
+
+    footer { text-align: center; padding: 50px; background: var(--primary-dark); color: white; margin-top: 60px; }
+    .divider { height: 2px; background: linear-gradient(to right, transparent, var(--accent-gold), transparent); margin: 40px 0; }
+  </style>
+</head>
+<body>
+
+<header id="pageHeader">
+  <h1>Pintig ng Panitikan</h1>
+  <p id="headerSub">Electronic Portfolio</p>
+</header>
+
+<nav id="mainNav">
+    <button class="tab-link nav-fil" onclick="openTab(event, 'tula')">Mga Tula</button>
+    <button class="tab-link nav-fil" onclick="openTab(event, 'kwento')">Maikling Kwento</button>
+    <button class="tab-link nav-fil" onclick="openTab(event, 'obra')">Mga Obra</button>
+    <button class="tab-link nav-educ" onclick="openTab(event, 'learning')">Learning Journey</button>
+    <button class="tab-link nav-author" onclick="openTab(event, 'author')">Profile</button>
+    <button onclick="goHome()" style="color: var(--accent-gold); font-weight: bold;">← BUMALIK</button>
+</nav>
+
+<div class="container">
+    
+    <div id="portal" class="tab-content active">
+        <div class="card" style="text-align: center; margin-bottom: 40px;">
+            <h2 style="border:none;">Maligayang Pagdating!</h2>
+            <p>Pumili ng kategorya sa ibaba upang simulan ang paglalakbay sa mundo ng panitikan at karunungan.</p>
+        </div>
+        <div class="portal-grid">
+            <div class="subject-card" onclick="showSubject('fil')">
+                <img src="https://png.pngtree.com/background/20230522/original/pngtree-stack-of-books-on-top-of-a-table-picture-image_2695945.jpg" class="card-img">
+                <div class="card-body"><h3>FIL 211</h3></div>
+            </div>
+            <div class="subject-card" onclick="showSubject('educ')">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80" class="card-img">
+                <div class="card-body"><h3>EDUC 322</h3></div>
+            </div>
+            <div class="subject-card" onclick="showSubject('author')">
+                <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t39.30808-6/571338837_1498976374646125_5315476881921656249_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFbNAqdaQV0y4psfzf22tD1_dZAHxePwQj91kAfF4_BCGxvq758UwWIZf9bU1FQ6PPtqKUXRYZkTl41cmRc3dpx&_nc_ohc=X-6xBwAgdwYQ7kNvwFmOoR1&_nc_oc=Admbp5gwj3fqFVcyFi7GZe-dghmukRW2htWsatV4ZQEmkbMLnsTaVb9pcfRz8_tRNb4&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=lo2Y5kzR_nXL4di1lk7hEA&oh=00_Afu1iz0gQGd-G10TkKjU9c2HN7y-OlnPshCocqyqnIz3Mw&oe=6986677D" class="card-img">
+                <div class="card-body"><h3>MAY-AKDA</h3></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tula" class="tab-content">
+        <div class="card">
+            <h2>Koleksyon ng mga Tula</h2>
+            <div class="poetry-menu">
+                <button class="p-btn active" onclick="showPoem('p1', this)">Ilaw ng Tahanan</button>
+                <button class="p-btn" onclick="showPoem('p2', this)">Dos-Dos</button>
+                <button class="p-btn" onclick="showPoem('p3', this)">Yo soy tu comienzo</button>
+            </div>
+            
+            <div id="p1" class="tula-text show">
+                <h3 style="color:var(--deep-red);">ILAW NG TAHANAN</h3>
+                Sa bisig ng ina, ligtas ang sinuman,
+                Kalinga’t pag-ibig ay walang hangganan,
+                Sa bawat hapdi’y may init ng lambing, 
+                Sa kanyang pag-ibig, ako’y nakabaling. 
+
+                Ilaw ng tahanan, sa dilim ay gabay,
+                Sa lungkot ng puso’y siya’y aking alay,
+                Tulad ng bituin sa gabi’y kumikislap,
+                Nagbibigay liwanag, sa buhay kong pinagarap.
+
+                Puyat at pagod ay hindi iniinda,
+                Para sa anak, lahat ay tinitiis niya, 
+                Ngiti sa labi’y sagot sa problema,
+                Dahil kay ina, buhay ay kay ganda. 
+
+                O mahal kong ina, wagas ang pagsuyo,
+                Sa bawat sandali’y alay aking puso,
+                Habang may buhay, ika'y papupurihan, 
+                Pagmamahal sayo'y ay walang hangganan
+                <span class="author-tag">— Anlicxx</span>
+            </div>
+
+            <div id="p2" class="tula-text">
+                <h3 style="color:var(--deep-red);">DOS-DOS</h3>
+                Simpleng numero
+                Ngunit hindi mo aakalain
+                napakahalaga nito sa mga kolehiyo
+                Mga numerong na siyang nagpabago
+                Sa aking masayahing pagkatao.
+
+                Mula Elementarya
+                Nakasanayan na ng aking Ina
+                Na palaging may sabit akong medalya
+                Ngunit sobrang hirap pala.
+
+                Sobrang hirap sanayin ang pamilya mo
+                Na makaroon ng sobrang taas na inaasahan sayo
+                Puro pressure, sakit at hirap ang nararamdaman ko
+                Na halos masambit ko na ang mga katagang “Ayaw ko na sobrang hirap pala ng ganito”.
+
+                Isang araw isang kakilala 
+                Ang nagsambit na ”i-check nyo ang grado nyo kay ganito puro kami mababa”
+                Agad kaming nagtungo ng aking mga kaibigan
+                Sa registrar ng aming paaralan.
+
+                Ang resulta’y hindi naming inasahan
+                Mababang grado ang aming nasilayan
+                Hindi naming mabatid at mawari 
+                Kung may kulang ba sa aming mga sarili.
+
+                Pagkatapos ng pangyayari
+                Hindi ko na maiwasang hindi umiyak gabi-gabi
+                Puro tanong sa aking isipan
+                Paano ko ito sasabihin sa aking mga magulang?
+
+                Ang pagnanais nilang ako’y magtapos ng may karangalan
+                Biglang nawala sa isang iglap lamang
+                Dahil sa simpleng numero
+                Nawala ang pinapangarap ko
+
+                Ngunit hindi pa dito matatapos ang aking kuwento
+                Ang pagkawala ng pinapangarap ko
+                Ay hindi magiging dahilan upang tumigil sapag-abot ng diploma’t sumbrerong pinapanagarap ng maraming tao
+                Sapagkat kahit anong mangyari magpapatuloy at lalaban ako!
+                <span class="author-tag">— Anlicxx</span>
+            </div>
+
+            <div id="p3" class="tula-text">
+                <h3 style="color:var(--deep-red);">YO SOY TU COMIENZO</h3>
+                (Ako ang iyong simula)
+
+                Malayo‑layo na rin ang naiwan mong lakarin
+                Pabalik sa simula at dating mga hangarin
+                Sisikaping tahakin bawat bigat na pasanin
+                Subukan nating bumalik at lahat ay unawain
+
+                Ngayo’y muling sumisigla bawat munting gunita
+                Tibayan natin ang loob kahit wala ang pahinga
+                Ulan ma’y di alintana sa oras na wala ka
+                Pero buhay ko’y sumisigla tuwing ika’y naaalala
+
+                Pansamantalang isasara bawat sakit na nadarama
+                Itatago ang lahat para lamang mapasaya ka
+                Pero bakit parang hindi mo na nadarama
+                At sa iba mo nakikita ang hatid kong saya
+
+                Hindi na alintana kung kanino o saan pa
+                Mas mabuting masaya ka, kahit ako’y mag‑isa
+                Basta pangako mo’y lahat ay di na mabubura
+                Aangat tayong pareho kahit ako’y tapakan pa
+
+                Muli mo sanang pagmasdan tanawing minsan mong nasilayan
+                At sa huling sulyap mo, ako sana ang iyong masilayan
+                Hindi man ako ang dulo o iyong hangganan
+                Mananatili pa rin akong simula ng lahat mong daraanan
+                <span class="author-tag">— Anlicxx</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="kwento" class="tab-content">
+        <div class="card">
+            <h2>Maikling Kwento</h2>
+            <h3 style="text-align: center; color: var(--deep-red);">Ang Luhang Nagyelo</h3>
+            <p style="text-align: center; font-style: italic; margin-bottom: 30px;">Ni: Anlicxx</p>
+            <div class="story-text">
+                <p>Sa malamig na lungsod ng Tagaytay, sa tuktok ng burol na tinatanaw ang lawa, nakatindig ang mansyon ng pamilyang Montenegro isa sa mga pinakagalang na angkan ng lipunan. Si Don Armando Montenegro, isang negosyanteng tinitingala sa industriya ng agham at teknolohiya, ay may asawang si Doña Celia, isang babaeng kilala sa kabaitan at karangyaan. Mayroon silang tatlong anak na lalaki — si Eros, ang tahimik at responsable; si Mavin, ang siyentipikong abala sa mga eksperimento; at si Levi, ang bunsong bulag na may pusong mas maliwanag pa sa sinag ng araw.</p>
+                <p>Ngunit hindi lang sila tatlo. May isa pang batang babae sa kanilang tahanan — si Amara, ang batang inampon nila labingwalong taon na ang nakalipas. Si Amara ang liwanag ng mansyon. Matiisin, magalang, at puno ng malasakit. Siya ang tumutulong sa lahat, umaalalay kay Levi, at nagpapasigla sa tahanan ng mga Montenegro. Bagaman hindi siya kadugo, walang sinuman sa pamilya ang tumingin sa kanya bilang “iba.” Sa mga mata ni Don Armando at Doña Celia, siya ay anak. Sa mga mata ng tatlong lalaki, siya ay kapatid. Sa mga mata ng Diyos, siya ay isang biyaya.</p>
+                <p>Ngunit isang araw, tatlong araw bago ang ika-18 kaarawan ni Amara, dumating ang balitang magpapayanig sa kanilang mundo. May isang babaeng natagpuan mula sa orphanage na nawawala raw noong sanggol pa, at ayon sa DNA test, siya ang tunay na anak nina Don Armando at Doña Celia. Ang pangalan niya ay Celestine. Maganda si Celestine, edukada, at mabuting magsalita. Agad siyang tinanggap ng pamilya. Ngunit sa likod ng kanyang ngiti ay may halong inggit — isang galit na umuukit sa puso tuwing makikita niyang minamahal si Amara. Habang lumilipas ang mga araw, unti-unti niyang giniba ang tiwala ng pamilya sa ampon nilang anak.</p>
+                <p>Isang hapon sa veranda, habang magkasamang nag-aayos ng mga bulaklak sina Amara at Celestine, biglang napasigaw ang huli. “Araaay! Tinulak ako ni Amara!” Nataranta si Doña Celia. Nakita niya si Celestine sa sahig, si Amara nama’y hawak ang gunting ng halaman, tulalang nakatingin. “Hindi po totoo! Nadulas lang siya!” Ngunit dahil sa luha ni Celestine, naniwala agad ang ina. “Amara,” malamig na wika ni Doña Celia, “huwag mong hayaang lamunin ka ng inggit.”</p>
+                <p>Kinabukasan, lumapit si Celestine na may pulang pisngi. “Mama… sinampal ako ni Amara. Sabi niya, hindi raw ako bagay dito.” Natahimik ang pamilya. Si Amara, na noon ay nagluluto, ay napatinig kay Doña Celia. “Hindi ko siya sinaktan…” Ngunit tanging buntong-hininga ang isinukli ng ina. “Anak, pagbigyan mo na siya. Siguro may pinagdadaanan lang.”</p>
+                <p>Ilang araw pa ang lumipas. Habang naghahanda si Amara ng hapunan, lumapit si Celestine at biglang sumigaw. “Tulong! Gusto niyang itusok ‘tong tinidor sa akin!” Agad na napasugod ang lahat. Si Amara ay natigilan, hawak pa rin ang tinidor na panluto. Hindi na siya nakapagsalita. Ang malamig na tingin ni Don Armando ay parang pader na hindi niya matibag. Mula noon, nawala ang sigla ng bahay. Si Levi lamang ang patuloy na kumakapit kay Amara. “Hindi mo kailangang magsalita, Ate. Nakikita ng puso ko kung sino ang totoo.” Ngunit bulag si Levi, at walang nakaririnig sa kanyang paniniwala.</p>
+                <p>Dumating ang ika-18 kaarawan ni Amara. Sa gitna ng kasiyahan, muling sumigaw si Celestine: “Tulungan ninyo ako! Tinulak ako ni Amara!” Napatigil ang lahat. “Tama na, Amara! Lumayas ka! Hindi mo na kami maloloko!” Walang lumapit. Basang-basa ng ulan, umalis si Amara, tangan ang bigat ng kawalang-katarungan. “Salamat po sa lahat,” bulong niya bago tuluyang maglaho sa dilim.</p>
+                <p>Makalipas ang ilang araw, natuklasan ni Mavin sa CCTV ang katotohanan: si Celestine mismo ang nananakit sa kanyang sarili upang mapagbintangan si Amara. Bago nila maharap si Celestine, bumagsak ito dahil sa malubhang sakit sa puso. Sa ospital, nabunyag na hindi siya ang tunay na anak. “Yung pinalayas ninyo… si Amara… siya ang tunay n’yong anak.”</p>
+                <p>Pumayag si Amara na maging cryogenically preserved (frozen) para sa isang eksperimento upang makatulong sa pamilya. Tatlumpung taon ang lumipas bago siya muling ginising. Matanda na ang kanyang mga magulang at kapatid. “Anak… patawad… bumalik ka na sa amin,” hiling ni Doña Celia. Ngunit tumingin lamang si Amara nang malamig at nagtanong: “Sino kayo?” Ang yelo sa kanyang katawan ay natunaw, ngunit ang luha na minsan niyang iniyakan ay matagal nang nagyelo kasama ang kanyang pagmamahal.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="obra" class="tab-content">
+        <div class="card">
+          <h2>Mga Obra</h2>
+          <div class="obra-grid">
+            <div class="obra-item">
+              <img src="https://scontent.fmnl17-3.fna.fbcdn.net/v/t39.30808-6/626842257_1573622203848208_6134022917010301842_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGs0m2QDDs4j3-NYjtU-DmYSQyRUO99mkdJDJFQ732aR_lfLnlSh_m-YH6V1s7AbG33Dto3d1tXzyNmCOBgNoBx&_nc_ohc=an6CVNZIMnEQ7kNvwH9U5_m&_nc_oc=AdnSz7OxYTjVTU7pfQJbb1GBA2wIToYtlzbFbLA2KQGsL-JPuB-Q5iycTMjiDSWCHrA&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&_nc_gid=QIg0KDNNSStR4sgAbYEvvA&oh=00_AfuDK3D6P_Bil-YKDsiGtx03Rk4Z7dQy1d-GOZPCpycjvw&oe=69863B9D" alt="Obra 1">
+              <div class="obra-caption">Malikhaing pagdidisenyo ng keychain (Obra 1)</div>
+            </div>
+            
+            <div class="obra-item">
+              <img src="https://scontent.fmnl17-3.fna.fbcdn.net/v/t39.30808-6/626806199_1573622087181553_6730148972782488813_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeESrA38MGh_YWH83ZE-h1W3Go4HQRq4iu0ajgdBGriK7YNUOf4Mvpm9jX4AoF5YCrBa7pZ-SNRNpBQoelt3FxHP&_nc_ohc=2KaD3BSsacoQ7kNvwEq4ZQ8&_nc_oc=Adkz5YKAUZm79kCAxjF1CYGlCP7iIYlm1Ky4JfzrsQew52nPseCnXzvnZCJ2febdFDI&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&_nc_gid=R6gEF7VYmfuxAMpN9GewOQ&oh=00_AfuqPjUfCWBuBAoKBOwcnwBwq6P54vhmHPhQqEekWkaw2A&oe=698667C0" alt="Obra 2">
+              <div class="obra-caption">Malikhaing pagdidisenyo ng keychain (Obra 2)</div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div id="learning" class="tab-content">
+        <div class="card">
+            <h2>Learning Journey</h2>
+            <p style="text-align:center;">Dito ilalagay ang mga repleksyon at natutunan para sa asignaturang EDUC 322.</p>
+        </div>
+    </div>
+
+    <div id="author" class="tab-content">
+        <div class="card" style="text-align: center;">
+            <h2>Profile ng May-akda</h2>
+            <div class="divider"></div>
+            <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t39.30808-6/571338837_1498976374646125_5315476881921656249_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFbNAqdaQV0y4psfzf22tD1_dZAHxePwQj91kAfF4_BCGxvq758UwWIZf9bU1FQ6PPtqKUXRYZkTl41cmRc3dpx&_nc_ohc=X-6xBwAgdwYQ7kNvwFmOoR1&_nc_oc=Admbp5gwj3fqFVcyFi7GZe-dghmukRW2htWsatV4ZQEmkbMLnsTaVb9pcfRz8_tRNb4&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=lo2Y5kzR_nXL4di1lk7hEA&oh=00_Afu1iz0gQGd-G10TkKjU9c2HN7y-OlnPshCocqyqnIz3Mw&oe=6986677D" class="portrait">
+            <h3 style="font-size: 2rem; color: var(--deep-red);">Anlicxx</h3>
+            <p style="font-weight: 600;">BSED FILIPINO III</p>
+            <p>Mindoro State University</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+  <p>© 2026 | Pintig ng Panitikan - Educational Portfolio by Anlicxx</p>
+</footer>
+
+<script>
+    function showSubject(subject) {
+        document.getElementById('portal').style.display = 'none';
+        document.getElementById('mainNav').style.display = 'flex';
+        const allNavs = document.querySelectorAll('.nav-fil, .nav-educ, .nav-author');
+        allNavs.forEach(b => b.style.display = 'none');
+        
+        if(subject === 'fil') {
+            document.getElementById('headerSub').innerText = "FIL 211";
+            document.querySelectorAll('.nav-fil').forEach(b => b.style.display = 'inline-block');
+            openTab(null, 'tula');
+        } else if(subject === 'educ') {
+            document.getElementById('headerSub').innerText = "EDUC 322";
+            document.querySelectorAll('.nav-educ, .nav-author').forEach(b => b.style.display = 'inline-block');
+            openTab(null, 'learning');
+        } else if(subject === 'author') {
+            document.getElementById('headerSub').innerText = "May-akda";
+            document.querySelectorAll('.nav-author').forEach(b => b.style.display = 'inline-block');
+            openTab(null, 'author');
+        }
+    }
+
+    function openTab(evt, tabName) {
+        let i, tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) tabcontent[i].style.display = "none";
+        document.getElementById(tabName).style.display = "block";
+        let tablinks = document.getElementsByClassName("tab-link");
+        for (i = 0; i < tablinks.length; i++) tablinks[i].classList.remove("active");
+        if(evt) evt.currentTarget.classList.add("active");
+        window.scrollTo({top: 350, behavior: 'smooth'});
+    }
+
+    function goHome() {
+        document.getElementById('mainNav').style.display = 'none';
+        const contents = document.getElementsByClassName('tab-content');
+        for(let c of contents) c.style.display = 'none';
+        document.getElementById('portal').style.display = 'block';
+        document.getElementById('headerSub').innerText = "Electronic Portfolio";
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    function showPoem(id, btn) {
+        document.querySelectorAll('.tula-text').forEach(p => p.classList.remove('show'));
+        document.querySelectorAll('.p-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(id).classList.add('show');
+        btn.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
