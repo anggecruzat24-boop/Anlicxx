@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pintig ng Panitikan | Educational Portfolio</title>
+  <title>Pintig ng Panitikan | Digital Portfolio</title>
   
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   
@@ -27,21 +27,29 @@
     }
 
     header {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                  url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), 
+                  url('https://wallpaperaccess.com/full/5407278.jpg') center/cover no-repeat;
       color: white;
-      padding: 100px 20px;
+      padding: 150px 20px;
       text-align: center;
+      border-bottom: 8px solid var(--accent-gold);
     }
 
     header h1 { 
         font-family: 'Great Vibes', cursive; 
-        font-size: 5em; 
-        text-shadow: 3px 3px 6px rgba(0,0,0,0.5); 
+        font-size: 7em; 
+        text-shadow: 4px 4px 8px rgba(0,0,0,0.6); 
         margin-bottom: 10px;
     }
 
-    header p { font-family: 'Playfair Display', serif; font-size: 1.4em; font-style: italic; opacity: 0.9; }
+    header p { 
+        font-family: 'Playfair Display', serif; 
+        font-size: 2em; 
+        font-style: italic; 
+        color: var(--accent-gold);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+    }
 
     nav { 
       background: var(--primary-dark); 
@@ -75,6 +83,8 @@
       border-radius: 20px; 
       box-shadow: 0 15px 35px rgba(0,0,0,0.07); 
       margin-bottom: 30px;
+      border-left: 5px solid var(--deep-red);
+      overflow: hidden;
     }
 
     .portal-grid {
@@ -106,8 +116,35 @@
       text-align: center;
     }
 
+    .section-banner {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      border: 3px solid var(--accent-gold);
+    }
+
+    .about-section {
+      background: #fffcf0;
+      border: 2px dashed var(--accent-gold);
+      padding: 30px;
+      margin-bottom: 40px;
+      border-radius: 15px;
+      text-align: center;
+    }
+
     .story-text p { margin-bottom: 25px; text-align: justify; text-indent: 50px; font-size: 1.15rem; color: #333; }
     
+    .story-image {
+      width: 100%;
+      max-width: 600px;
+      display: block;
+      margin: 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
     .tula-text { 
       text-align: center; 
       font-style: italic; 
@@ -151,17 +188,26 @@
     }
     .p-btn.active { background: var(--deep-red); color: white; }
 
-    .portrait { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 5px solid var(--accent-gold); margin-bottom: 20px; }
+    .portrait { width: 220px; height: 220px; border-radius: 50%; object-fit: cover; border: 5px solid var(--accent-gold); margin-bottom: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
-    footer { text-align: center; padding: 50px; background: var(--primary-dark); color: white; margin-top: 60px; }
-    .divider { height: 2px; background: linear-gradient(to right, transparent, var(--accent-gold), transparent); margin: 40px 0; }
+    /* FOOTER STYLES */
+    footer { 
+      text-align: center; 
+      padding: 80px 20px; 
+      background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)), 
+                  url('https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1500&auto=format&fit=crop') center/cover;
+      color: white; 
+      margin-top: 60px; 
+      border-top: 5px solid var(--accent-gold);
+    }
+    .divider { height: 2px; background: linear-gradient(to right, transparent, var(--accent-gold), transparent); margin: 30px 0; }
   </style>
 </head>
 <body>
 
 <header id="pageHeader">
   <h1>Pintig ng Panitikan</h1>
-  <p id="headerSub">Electronic Portfolio</p>
+  <p id="headerSub">Digital Portfolio</p>
 </header>
 
 <nav id="mainNav">
@@ -176,13 +222,20 @@
 <div class="container">
     
     <div id="portal" class="tab-content active">
+        
+        <div class="about-section">
+            <h2 style="font-family: 'Great Vibes', cursive; font-size: 3.5rem;">Tungkol sa Website</h2>
+            <p>Ang <strong>Pintig ng Panitikan</strong> ay isang digital na imbakan ng mga piling akda at karanasan sa pagkatuto. Layunin nitong ipakita ang ganda ng literaturang Pilipino at ang naging paglalakbay ng may-akda sa larangan ng edukasyon at sining.</p>
+        </div>
+
         <div class="card" style="text-align: center; margin-bottom: 40px;">
             <h2 style="border:none;">Maligayang Pagdating!</h2>
             <p>Pumili ng kategorya sa ibaba upang simulan ang paglalakbay sa mundo ng panitikan at karunungan.</p>
         </div>
+
         <div class="portal-grid">
             <div class="subject-card" onclick="showSubject('fil')">
-                <img src="https://png.pngtree.com/background/20230522/original/pngtree-stack-of-books-on-top-of-a-table-picture-image_2695945.jpg" class="card-img">
+                <img src="https://static.vecteezy.com/system/resources/previews/024/618/840/non_2x/antique-quill-pen-writes-elegant-calligraphy-on-parchment-document-generated-by-ai-free-photo.jpg" class="card-img">
                 <div class="card-body"><h3>FIL 211</h3></div>
             </div>
             <div class="subject-card" onclick="showSubject('educ')">
@@ -190,7 +243,7 @@
                 <div class="card-body"><h3>EDUC 322</h3></div>
             </div>
             <div class="subject-card" onclick="showSubject('author')">
-                <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t39.30808-6/571338837_1498976374646125_5315476881921656249_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFbNAqdaQV0y4psfzf22tD1_dZAHxePwQj91kAfF4_BCGxvq758UwWIZf9bU1FQ6PPtqKUXRYZkTl41cmRc3dpx&_nc_ohc=X-6xBwAgdwYQ7kNvwFmOoR1&_nc_oc=Admbp5gwj3fqFVcyFi7GZe-dghmukRW2htWsatV4ZQEmkbMLnsTaVb9pcfRz8_tRNb4&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=lo2Y5kzR_nXL4di1lk7hEA&oh=00_Afu1iz0gQGd-G10TkKjU9c2HN7y-OlnPshCocqyqnIz3Mw&oe=6986677D" class="card-img">
+                <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t39.30808-6/571338837_1498976374646125_5315476881921656249_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFbNAqdaQV0y4psfzf22tD1_dZAHxePwQj91kAfF4_BCGxvq758UwWIZf9bU1FQ6PPtqKUXRYZkTl41cmRc3dpx&_nc_ohc=AsLAZ0oDzmcQ7kNvwHhPhso&_nc_oc=AdnFItO-eWTdYfkqkBTvLrpRfD9Wz4eY_Y6SHnmb7GvD7mVjcLLP67Scgs76x_9ZONE&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=Xk2Ux_Gf-5t_i7HmwGQ_1Q&oh=00_AftqagclQ9QKKpUaugtFK_ejiCc03gEvBFp9Ehn--5eFxw&oe=69890A7D" class="card-img">
                 <div class="card-body"><h3>MAY-AKDA</h3></div>
             </div>
         </div>
@@ -198,6 +251,7 @@
 
     <div id="tula" class="tab-content">
         <div class="card">
+            <img src="https://static.vecteezy.com/system/resources/previews/024/618/840/non_2x/antique-quill-pen-writes-elegant-calligraphy-on-parchment-document-generated-by-ai-free-photo.jpg" class="section-banner">
             <h2>Koleksyon ng mga Tula</h2>
             <div class="poetry-menu">
                 <button class="p-btn active" onclick="showPoem('p1', this)">Ilaw ng Tahanan</button>
@@ -257,7 +311,7 @@
                 Hindi naming mabatid at mawari 
                 Kung may kulang ba sa aming mga sarili.
 
-                Pagkatapos ng pangyayari
+                Pagkatpos ng pangyaayri
                 Hindi ko na maiwasang hindi umiyak gabi-gabi
                 Puro tanong sa aking isipan
                 Paano ko ito sasabihin sa aking mga magulang?
@@ -269,7 +323,7 @@
 
                 Ngunit hindi pa dito matatapos ang aking kuwento
                 Ang pagkawala ng pinapangarap ko
-                Ay hindi magiging dahilan upang tumigil sapag-abot ng diploma’t sumbrerong pinapanagarap ng maraming tao
+                Ay hindi magiging dahilan upang tumigil sa pag-abot ng diploma’t sumbrerong pinapanagarap ng maraming tao
                 Sapagkat kahit anong mangyari magpapatuloy at lalaban ako!
                 <span class="author-tag">— Anlicxx</span>
             </div>
@@ -277,7 +331,6 @@
             <div id="p3" class="tula-text">
                 <h3 style="color:var(--deep-red);">YO SOY TU COMIENZO</h3>
                 (Ako ang iyong simula)
-
                 Malayo‑layo na rin ang naiwan mong lakarin
                 Pabalik sa simula at dating mga hangarin
                 Sisikaping tahakin bawat bigat na pasanin
@@ -310,18 +363,37 @@
     <div id="kwento" class="tab-content">
         <div class="card">
             <h2>Maikling Kwento</h2>
-            <h3 style="text-align: center; color: var(--deep-red);">Ang Luhang Nagyelo</h3>
-            <p style="text-align: center; font-style: italic; margin-bottom: 30px;">Ni: Anlicxx</p>
+            <h3 style="text-align: center; color: var(--deep-red); font-size: 2.2rem; margin-bottom: 20px;">Ang Luhang Nagyelo</h3>
+            
+            <img src="https://scontent.fmnl17-8.fna.fbcdn.net/v/t39.30808-6/626443111_1575253070351788_3686587151834369920_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGfzB6wW8VSEJblddVk52YgNocm-kD8cI02hyb6QPxwjZ0ztBZ7auRKYEvePZPgAhMWxvIs4bNpy6DrtiVMj4O5&_nc_ohc=vvGlXMk4ceUQ7kNvwHllYJ6&_nc_oc=AdlltB-xndtKvwofby6QWaekwpuqBpg8IXXZAjMJ71bKf3acVRmdKWdvTqMc5qZviJc&_nc_zt=23&_nc_ht=scontent.fmnl17-8.fna&_nc_gid=99pusyzSMaXbtjeNrfFoIA&oh=00_AfuECTKlMHrfQKhSqx2Yv4a7xnBc-bQutr67y6NnLHNgNw&oe=6988FAC6" class="story-image" alt="Ang Luhang Nagyelo Illustration">
+
             <div class="story-text">
-                <p>Sa malamig na lungsod ng Tagaytay, sa tuktok ng burol na tinatanaw ang lawa, nakatindig ang mansyon ng pamilyang Montenegro isa sa mga pinakagalang na angkan ng lipunan. Si Don Armando Montenegro, isang negosyanteng tinitingala sa industriya ng agham at teknolohiya, ay may asawang si Doña Celia, isang babaeng kilala sa kabaitan at karangyaan. Mayroon silang tatlong anak na lalaki — si Eros, ang tahimik at responsable; si Mavin, ang siyentipikong abala sa mga eksperimento; at si Levi, ang bunsong bulag na may pusong mas maliwanag pa sa sinag ng araw.</p>
-                <p>Ngunit hindi lang sila tatlo. May isa pang batang babae sa kanilang tahanan — si Amara, ang batang inampon nila labingwalong taon na ang nakalipas. Si Amara ang liwanag ng mansyon. Matiisin, magalang, at puno ng malasakit. Siya ang tumutulong sa lahat, umaalalay kay Levi, at nagpapasigla sa tahanan ng mga Montenegro. Bagaman hindi siya kadugo, walang sinuman sa pamilya ang tumingin sa kanya bilang “iba.” Sa mga mata ni Don Armando at Doña Celia, siya ay anak. Sa mga mata ng tatlong lalaki, siya ay kapatid. Sa mga mata ng Diyos, siya ay isang biyaya.</p>
-                <p>Ngunit isang araw, tatlong araw bago ang ika-18 kaarawan ni Amara, dumating ang balitang magpapayanig sa kanilang mundo. May isang babaeng natagpuan mula sa orphanage na nawawala raw noong sanggol pa, at ayon sa DNA test, siya ang tunay na anak nina Don Armando at Doña Celia. Ang pangalan niya ay Celestine. Maganda si Celestine, edukada, at mabuting magsalita. Agad siyang tinanggap ng pamilya. Ngunit sa likod ng kanyang ngiti ay may halong inggit — isang galit na umuukit sa puso tuwing makikita niyang minamahal si Amara. Habang lumilipas ang mga araw, unti-unti niyang giniba ang tiwala ng pamilya sa ampon nilang anak.</p>
+                <p>Sa malamig na lungsod ng Tagaytay, sa tuktok ng burol na tinatanaw ang lawa, nakatindig ang mansyon ng pamilyang Montenegro—isa sa mga pinakagalang na angkan ng lipunan. Si Don Armando Montenegro, isang negosyanteng tinitingala sa industriya ng agham at teknolohiya, ay may asawang si Doña Celia, isang babaeng kilala sa kabaitan at karangyaan. Mayroon silang tatlong anak na lalaki: si Eros, ang tahimik at responsable; si Mavin, ang siyentipikong abala sa mga eksperimento; at si Levi, ang bunsong bulag na may pusong mas maliwanag pa sa sinag ng araw.</p>
+                
+                <p>Ngunit hindi lang sila tatlo. May isa pang batang babae sa kanilang tahanan—si Amara, ang batang inampon nila labingwalong taon na ang nakalipas. Si Amara ang liwanag ng mansyon. Matiisin, magalang, at puno ng malasakit. Siya ang tumutulong sa lahat, umaalalay kay Levi, at nagpapasigla sa tahanan ng mga Montenegro. Bagaman hindi siya kadugo, walang sinuman sa pamilya ang tumingin sa kanya bilang “iba.” Sa mga mata ni Don Armando at Doña Celia, siya ay anak. Sa mga mata ng tatlong lalaki, siya ay kapatid. Sa mga mata ng Diyos, siya ay isang biyaya.</p>
+                
+                <p>Ngunit isang araw, tatlong araw bago ang ika-18 kaarawan ni Amara, dumating ang balitang magpapayanig sa kanilang mundo. May isang babaeng natagpuan mula sa orphanage—nawawala raw noong sanggol pa, at ayon sa DNA test, siya ang tunay na anak nina Don Armando at Doña Celia. Ang pangalan niya ay Celestine. Maganda si Celestine, edukada, at mabuting magsalita. Agad siyang tinanggap ng pamilya. Ngunit sa likod ng kanyang ngiti ay may halong inggit—isang galit na umuukit sa puso tuwing makikita niyang minamahal si Amara. Habang lumilipas ang mga araw, unti-unti niyang giniba ang tiwala ng pamilya sa ampon nilang anak.</p>
+                
                 <p>Isang hapon sa veranda, habang magkasamang nag-aayos ng mga bulaklak sina Amara at Celestine, biglang napasigaw ang huli. “Araaay! Tinulak ako ni Amara!” Nataranta si Doña Celia. Nakita niya si Celestine sa sahig, si Amara nama’y hawak ang gunting ng halaman, tulalang nakatingin. “Hindi po totoo! Nadulas lang siya!” Ngunit dahil sa luha ni Celestine, naniwala agad ang ina. “Amara,” malamig na wika ni Doña Celia, “huwag mong hayaang lamunin ka ng inggit.”</p>
-                <p>Kinabukasan, lumapit si Celestine na may pulang pisngi. “Mama… sinampal ako ni Amara. Sabi niya, hindi raw ako bagay dito.” Natahimik ang pamilya. Si Amara, na noon ay nagluluto, ay napatinig kay Doña Celia. “Hindi ko siya sinaktan…” Ngunit tanging buntong-hininga ang isinukli ng ina. “Anak, pagbigyan mo na siya. Siguro may pinagdadaanan lang.”</p>
-                <p>Ilang araw pa ang lumipas. Habang naghahanda si Amara ng hapunan, lumapit si Celestine at biglang sumigaw. “Tulong! Gusto niyang itusok ‘tong tinidor sa akin!” Agad na napasugod ang lahat. Si Amara ay natigilan, hawak pa rin ang tinidor na panluto. Hindi na siya nakapagsalita. Ang malamig na tingin ni Don Armando ay parang pader na hindi niya matibag. Mula noon, nawala ang sigla ng bahay. Si Levi lamang ang patuloy na kumakapit kay Amara. “Hindi mo kailangang magsalita, Ate. Nakikita ng puso ko kung sino ang totoo.” Ngunit bulag si Levi, at walang nakaririnig sa kanyang paniniwala.</p>
-                <p>Dumating ang ika-18 kaarawan ni Amara. Sa gitna ng kasiyahan, muling sumigaw si Celestine: “Tulungan ninyo ako! Tinulak ako ni Amara!” Napatigil ang lahat. “Tama na, Amara! Lumayas ka! Hindi mo na kami maloloko!” Walang lumapit. Basang-basa ng ulan, umalis si Amara, tangan ang bigat ng kawalang-katarungan. “Salamat po sa lahat,” bulong niya bago tuluyang maglaho sa dilim.</p>
-                <p>Makalipas ang ilang araw, natuklasan ni Mavin sa CCTV ang katotohanan: si Celestine mismo ang nananakit sa kanyang sarili upang mapagbintangan si Amara. Bago nila maharap si Celestine, bumagsak ito dahil sa malubhang sakit sa puso. Sa ospital, nabunyag na hindi siya ang tunay na anak. “Yung pinalayas ninyo… si Amara… siya ang tunay n’yong anak.”</p>
-                <p>Pumayag si Amara na maging cryogenically preserved (frozen) para sa isang eksperimento upang makatulong sa pamilya. Tatlumpung taon ang lumipas bago siya muling ginising. Matanda na ang kanyang mga magulang at kapatid. “Anak… patawad… bumalik ka na sa amin,” hiling ni Doña Celia. Ngunit tumingin lamang si Amara nang malamig at nagtanong: “Sino kayo?” Ang yelo sa kanyang katawan ay natunaw, ngunit ang luha na minsan niyang iniyakan ay matagal nang nagyelo kasama ang kanyang pagmamahal.</p>
+                
+                <p>Kinabukasan, lumapit si Celestine na may pulang pisngi. “Mama… sinampal ako ni Amara. Sabi niya, hindi raw ako bagay dito.” Natahimik ang pamilya. Si Amara, na noon ay nagluluto, ay napatingin kay Doña Celia. “Hindi ko siya sinaktan…” Ngunit tanging buntong-hininga ang isinukli ng ina. “Anak, pagbigyan mo na siya. Siguro may pinagdadaanan lang.”</p>
+                
+                <p>Ilang araw pa ang lumipas. Habang naghahanda si Amara ng hapunan, lumapit si Celestine at biglang sumigaw. “Tulong! Gusto niyang itusok ‘tong tinidor sa akin!” Agad na napasugod ang lahat. Si Amara ay natigilan, hawak pa rin ang tinidor na panluto. Hindi na siya nakapagsalita. Ang malamig na tingin ni Don Armando ay parang pader na hindi niya matibag. Mula noon, nawala ang sigla ng bahay. Ang bawat hapag ay tahimik. Ang mga ngiti ni Doña Celia ay napalitan ng pag-aalinlangan. Si Levi lamang ang patuloy na kumakapit kay Amara. “Hindi mo kailangang magsalita, Ate. Nakikita ng puso ko kung sino ang totoo.” Ngunit bulag si Levi, at walang nakaririnig sa kanyang paniniwala.</p>
+                
+                <p>Dumating ang ika-18 kaarawan ni Amara. Makulay ang gabi, puno ng mga ilaw, tugtugin, at mamahaling handog. Ngunit sa gitna ng kasiyahan, muling sumigaw si Celestine: “Tulungan ninyo ako! Tinulak ako ni Amara! Gusto niya akong saktan!” Napatigil ang lahat. Si Amara’y natigilan, hawak ang bulaklak na iaabot sana sa kanyang mga magulang. “Hindi ko siya tinulak…” Ngunit ang tinig ni Doña Celia ay mas matalim pa sa hangin. “Tama na, Amara! Lumayas ka! Hindi mo na kami maloloko!” Walang lumapit. Ni si Eros, ni si Mavin. Basang-basa ng ulan, umalis si Amara, tangan ang bigat ng kawalang-katarungan. “Salamat po sa lahat,” bulong niya bago tuluyang maglaho sa dilim.</p>
+                
+                <p>Makalipas ang ilang araw, tahimik ang mansyon. Ang bawat hapag ay malamig. Ang bawat gabi ay mahaba. Hanggang isang gabi, habang nag-aayos ng data sa laboratoryo si Mavin, napansin niyang gumagana pa ang lumang CCTV system. Pinanood niya ito at doon niya nakita ang katotohanan. Si Celestine mismo ang sinasaktan ang sarili. Sinasampal ang sariling mukha, tinutulak ang sarili sa dingding, habang umiiyak sa salamin: “Hindi ako papayag… ako ang anak nila… ako, hindi siya…”</p>
+                
+                <p>Isa-isa nilang pinanood ang lahat. Ang mga paratang kay Amara ay pawang kasinungalingan. Si Doña Celia ay napahawak sa dibdib, si Don Armando ay hindi makapagsalita. Ngunit bago nila maharap si Celestine, bigla itong bumagsak sa sala, humihingal, halos hindi na huminga. Dinala nila ito sa ospital. Pagkatapos ng pagsusuri, lumapit ang doktor. “May malubhang sakit sa puso ang dalaga. Ngunit wala sa inyong lahi ang ganitong karamdaman. At higit sa lahat… iba ang blood type niya. Siya ay B-positive, samantalang kayong mag-asawa ay parehong A.”</p>
+                
+                <p>Napatigil ang lahat. Nagmulat si Celestine, nanghihina, ngunit umiiyak. “Mama… Papa…” “Anak, huwag ka nang magsalita,” sabi ni Doña Celia, nanginginig. Ngunit pinilit niyang magsalita. “Hindi ako ang anak ninyo… Yung pinalayas ninyo… si Amara… siya ang tunay n’yong anak.” Tumulo ang luha ni Doña Celia. “Bakit mo ginawa ito, anak?” “Dahil gusto kong maranasan kung paano magmahal ang mga magulang,” mahinang sagot ni Celestine. “Pero kahit kailan… hindi ko kayang pantayan si Amara.” At bago siya tuluyang mawalan ng malay, bumulong siya: “Hanapin n’yo siya… bago huli ang lahat.”</p>
+                
+                <p>Pagbalik sa mansyon, sinubukan ni Mavin na buksan ang mga lumang file ng kanyang eksperimento at doon niya nakita ang nakagugulat na katotohanan: Test Subject 0007 – Amara Montenegro. Cryogenic Preservation: 30 Years. Kasama ang isang liham mula kay Amara: “Kuya Mavin, kung kailangan mo ng boluntaryo sa proyekto mo, ako na lang. Ang pag-aaruga n’yo sa akin ay sapat na. Salamat sa lahat.” At sa tabi ng liham, may isa pang dokumento ng donasyon: ‘Donor: Amara Montenegro – Cornea for Levi Montenegro.’ Doon nila napagtanto—ang paningin ni Levi ay galing sa kanya. Ang liwanag na mayroon siya ay ibinigay ni Amara, sa kabila ng lahat ng sakit na idinulot nila.</p>
+                
+                <p>Tatlongpung taon ang lumipas. Binuksan ni Mavin ang cryo-chamber. Umuusok, malamig, at tila huminto ang oras. Dahan-dahang dumilat si Amara. Nakatayo sa harap niya ang mga Montenegro—matanda na, nanginginig, ngunit sabik. Lumapit si Doña Celia, may luha sa pisngi. “Anak… patawad… bumalik ka na sa amin.” Ngunit tumingin lamang si Amara, malamig ang mga mata, walang luha, walang galit, walang saya. “Sino kayo?” mahina niyang tanong.</p>
+                
+                <p>Tahimik ang silid. Tanging ugong ng makina ang maririnig. At doon nila napagtanto na ang pinakamasakit na parusa ay hindi kamatayan, kundi ang hindi ka na makilala ng taong minsan mong itinaboy. Ang yelo sa katawan ni Amara ay natunaw, ngunit ang luha na minsan niyang iniyakan ay matagal nang nagyelo—at kasama nitong natabunan ang lahat ng init ng pagmamahal na minsan ay kanyang inalay.</p>
+                <p> <span class="author-tag">— Wakas</span> </p>
             </div>
         </div>
     </div>
@@ -331,13 +403,12 @@
           <h2>Mga Obra</h2>
           <div class="obra-grid">
             <div class="obra-item">
-              <img src="https://scontent.fmnl17-3.fna.fbcdn.net/v/t39.30808-6/626842257_1573622203848208_6134022917010301842_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGs0m2QDDs4j3-NYjtU-DmYSQyRUO99mkdJDJFQ732aR_lfLnlSh_m-YH6V1s7AbG33Dto3d1tXzyNmCOBgNoBx&_nc_ohc=an6CVNZIMnEQ7kNvwH9U5_m&_nc_oc=AdnSz7OxYTjVTU7pfQJbb1GBA2wIToYtlzbFbLA2KQGsL-JPuB-Q5iycTMjiDSWCHrA&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&_nc_gid=QIg0KDNNSStR4sgAbYEvvA&oh=00_AfuDK3D6P_Bil-YKDsiGtx03Rk4Z7dQy1d-GOZPCpycjvw&oe=69863B9D" alt="Obra 1">
-              <div class="obra-caption">Malikhaing pagdidisenyo ng keychain (Obra 1)</div>
+              <img src="https://scontent.fmnl17-3.fna.fbcdn.net/v/t39.30808-6/626806199_1573622087181553_6730148972782488813_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeESrA38MGh_YWH83ZE-h1W3Go4HQRq4iu0ajgdBGriK7YNUOf4Mvpm9jX4AoF5YCrBa7pZ-SNRNpBQoelt3FxHP&_nc_ohc=-QDIzBcaJfQQ7kNvwHPkCTK&_nc_oc=AdmR581phZSsBRNiurO9l6IcPvm9ORFCv-wp1Xu-zmk1ZbrHFh_IEdSIcpZZ6CA1ouE&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&_nc_gid=1AmsUhSQkRM70mCOxiFkxw&oh=00_AftKCMiIQEl1AhF4y8TU66gMU3wddojh3ryTeRI2REvWKg&oe=69890AC0" alt="Obra 1">
+              <div class="obra-caption">Malikhaing pagdidisenyo sa keychain</div>
             </div>
-            
             <div class="obra-item">
-              <img src="https://scontent.fmnl17-3.fna.fbcdn.net/v/t39.30808-6/626806199_1573622087181553_6730148972782488813_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeESrA38MGh_YWH83ZE-h1W3Go4HQRq4iu0ajgdBGriK7YNUOf4Mvpm9jX4AoF5YCrBa7pZ-SNRNpBQoelt3FxHP&_nc_ohc=2KaD3BSsacoQ7kNvwEq4ZQ8&_nc_oc=Adkz5YKAUZm79kCAxjF1CYGlCP7iIYlm1Ky4JfzrsQew52nPseCnXzvnZCJ2febdFDI&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&_nc_gid=R6gEF7VYmfuxAMpN9GewOQ&oh=00_AfuqPjUfCWBuBAoKBOwcnwBwq6P54vhmHPhQqEekWkaw2A&oe=698667C0" alt="Obra 2">
-              <div class="obra-caption">Malikhaing pagdidisenyo ng keychain (Obra 2)</div>
+              <img src="https://scontent.fmnl17-3.fna.fbcdn.net/v/t39.30808-6/626842257_1573622203848208_6134022917010301842_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGs0m2QDDs4j3-NYjtU-DmYSQyRUO99mkdJDJFQ732aR_lfLnlSh_m-YH6V1s7AbG33Dto3d1tXzyNmCOBgNoBx&_nc_ohc=an6CVNZIMnEQ7kNvwHIOvvU&_nc_oc=AdkxxrVM5VHkAmwL1Wj1TA6Y5CBeJY-KtdwgFu9c2Cu3u1hhKs2z43ryi1_WHHPg2w8&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&_nc_gid=MqAiWiWoKbQZfdsSjsUDaA&oh=00_AfuNSXJNBAg61zmpXIhxai0psJAm_g0MGDakgXW9upMLuA&oe=698916DD" alt="Obra 2">
+              <div class="obra-caption">masining na pagdidisenyo sa keychain</div>
             </div>
           </div>
         </div>
@@ -346,7 +417,7 @@
     <div id="learning" class="tab-content">
         <div class="card">
             <h2>Learning Journey</h2>
-            <p style="text-align:center;">Dito ilalagay ang mga repleksyon at natutunan para sa asignaturang EDUC 322.</p>
+            <p style="text-align:center;">Dito ilalagay ang mga repleksyon para sa asignaturang EDUC 322.</p>
         </div>
     </div>
 
@@ -354,7 +425,18 @@
         <div class="card" style="text-align: center;">
             <h2>Profile ng May-akda</h2>
             <div class="divider"></div>
-            <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t39.30808-6/571338837_1498976374646125_5315476881921656249_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFbNAqdaQV0y4psfzf22tD1_dZAHxePwQj91kAfF4_BCGxvq758UwWIZf9bU1FQ6PPtqKUXRYZkTl41cmRc3dpx&_nc_ohc=X-6xBwAgdwYQ7kNvwFmOoR1&_nc_oc=Admbp5gwj3fqFVcyFi7GZe-dghmukRW2htWsatV4ZQEmkbMLnsTaVb9pcfRz8_tRNb4&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=lo2Y5kzR_nXL4di1lk7hEA&oh=00_Afu1iz0gQGd-G10TkKjU9c2HN7y-OlnPshCocqyqnIz3Mw&oe=6986677D" class="portrait">
+            
+            <div id="fb-root"></div>
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"></script>
+            <div class="fb-video" 
+                 data-href="https://www.facebook.com/watch/?v=1EcaFCAQjp" 
+                 data-width="500" 
+                 data-show-text="false"
+                 style="margin: 20px auto;">
+            </div>
+            <div class="divider"></div>
+
+            <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t39.30808-6/571338837_1498976374646125_5315476881921656249_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFbNAqdaQV0y4psfzf22tD1_dZAHxePwQj91kAfF4_BCGxvq758UwWIZf9bU1FQ6PPtqKUXRYZkTl41cmRc3dpx&_nc_ohc=AsLAZ0oDzmcQ7kNvwHhPhso&_nc_oc=AdnFItO-eWTdYfkqkBTvLrpRfD9Wz4eY_Y6SHnmb7GvD7mVjcLLP67Scgs76x_9ZONE&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=Xk2Ux_Gf-5t_i7HmwGQ_1Q&oh=00_AftqagclQ9QKKpUaugtFK_ejiCc03gEvBFp9Ehn--5eFxw&oe=69890A7D" class="portrait" alt="Anlicxx Profile Picture">
             <h3 style="font-size: 2rem; color: var(--deep-red);">Anlicxx</h3>
             <p style="font-weight: 600;">BSED FILIPINO III</p>
             <p>Mindoro State University</p>
@@ -364,7 +446,12 @@
 </div>
 
 <footer>
-  <p>© 2026 | Pintig ng Panitikan - Educational Portfolio by Anlicxx</p>
+  <div class="divider"></div>
+  <div style="font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 10px;">Pintig ng Panitikan</div>
+  <p>© 2026 | Digital Portfolio by Anlicxx</p>
+  <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 15px; font-style: italic;">
+      "Sulat para sa nakaraan, sining para sa kasalukuyan, aral para sa kinabukasan."
+  </p>
 </footer>
 
 <script>
@@ -380,7 +467,7 @@
             openTab(null, 'tula');
         } else if(subject === 'educ') {
             document.getElementById('headerSub').innerText = "EDUC 322";
-            document.querySelectorAll('.nav-educ, .nav-author').forEach(b => b.style.display = 'inline-block');
+            document.querySelectorAll('.nav-educ').forEach(b => b.style.display = 'inline-block');
             openTab(null, 'learning');
         } else if(subject === 'author') {
             document.getElementById('headerSub').innerText = "May-akda";
@@ -396,7 +483,7 @@
         let tablinks = document.getElementsByClassName("tab-link");
         for (i = 0; i < tablinks.length; i++) tablinks[i].classList.remove("active");
         if(evt) evt.currentTarget.classList.add("active");
-        window.scrollTo({top: 350, behavior: 'smooth'});
+        window.scrollTo({top: 450, behavior: 'smooth'});
     }
 
     function goHome() {
@@ -404,7 +491,7 @@
         const contents = document.getElementsByClassName('tab-content');
         for(let c of contents) c.style.display = 'none';
         document.getElementById('portal').style.display = 'block';
-        document.getElementById('headerSub').innerText = "Electronic Portfolio";
+        document.getElementById('headerSub').innerText = "Digital Portfolio";
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
