@@ -26,6 +26,25 @@
       overflow-x: hidden;
     }
 
+    /* MUSIC PLAYER UI */
+    .music-container {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      z-index: 2500;
+      background: white;
+      padding: 10px 15px;
+      border-radius: 50px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 2px solid var(--accent-gold);
+    }
+    
+    .music-info { font-size: 0.7rem; font-weight: bold; color: var(--deep-red); }
+
+    /* HEADER */
     header {
       background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), 
                   url('https://wallpaperaccess.com/full/5407278.jpg') center/cover no-repeat;
@@ -37,14 +56,13 @@
 
     header h1 { 
         font-family: 'Great Vibes', cursive; 
-        font-size: 7em; 
+        font-size: clamp(3.5rem, 10vw, 7rem); 
         text-shadow: 4px 4px 8px rgba(0,0,0,0.6); 
-        margin-bottom: 10px;
     }
 
     header p { 
         font-family: 'Playfair Display', serif; 
-        font-size: 2em; 
+        font-size: clamp(1.2rem, 4vw, 2rem); 
         font-style: italic; 
         color: var(--accent-gold);
         text-transform: uppercase;
@@ -55,6 +73,7 @@
       background: var(--primary-dark); 
       display: none; 
       justify-content: center; 
+      flex-wrap: wrap;
       position: sticky; 
       top: 0; 
       z-index: 1000; 
@@ -64,7 +83,7 @@
     nav button { 
       background: none; border: none; color: #fff8e7; 
       padding: 18px 25px; cursor: pointer; font-size: 1rem; transition: 0.3s;
-      font-weight: 500; text-transform: uppercase; letter-spacing: 1px;
+      font-weight: 500; text-transform: uppercase;
     }
 
     nav button:hover { color: var(--accent-gold); }
@@ -79,14 +98,14 @@
 
     .card { 
       background: white; 
-      padding: 45px; 
+      padding: clamp(20px, 5vw, 45px); 
       border-radius: 20px; 
       box-shadow: 0 15px 35px rgba(0,0,0,0.07); 
       margin-bottom: 30px;
       border-left: 5px solid var(--deep-red);
-      overflow: hidden;
     }
 
+    /* PORTAL GRID */
     .portal-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -94,118 +113,99 @@
     }
 
     .subject-card {
-      background: white;
-      border-radius: 25px;
-      overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      transition: 0.4s ease;
-      cursor: pointer;
-      text-align: center;
+      background: white; border-radius: 25px; overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1); transition: 0.4s ease;
+      cursor: pointer; text-align: center;
     }
-
     .subject-card:hover { transform: translateY(-10px); }
     .card-img { width: 100%; height: 220px; object-fit: cover; }
     .card-body { padding: 30px 20px; }
     .card-body h3 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--primary-dark); }
 
-    h2 { 
-      color: var(--deep-red); 
-      font-family: 'Playfair Display', serif; 
-      font-size: 2.5rem; 
-      margin-bottom: 25px; 
-      text-align: center;
+    /* GALLERY ZOOM EFFECT */
+    .obra-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+    .obra-item { 
+      position: relative;
+      border-radius: 15px; 
+      overflow: hidden; 
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+      background: var(--primary-dark);
+      cursor: pointer;
     }
-
-    .section-banner {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 15px;
-      margin-bottom: 30px;
-      border: 3px solid var(--accent-gold);
+    .obra-item img { 
+      width: 100%; height: auto; display: block; 
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
     }
-
-    .about-section {
-      background: #fffcf0;
-      border: 2px dashed var(--accent-gold);
-      padding: 30px;
-      margin-bottom: 40px;
-      border-radius: 15px;
-      text-align: center;
+    .obra-item:hover img { transform: scale(1.1); }
+    
+    .obra-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      color: white; padding: 20px; opacity: 0; transition: 0.3s; text-align: center;
     }
+    .obra-item:hover .obra-overlay { opacity: 1; }
 
+    /* TEXT STYLES */
     .story-text p { margin-bottom: 25px; text-align: justify; text-indent: 50px; font-size: 1.15rem; color: #333; }
     
-    .story-image {
-      width: 100%;
-      max-width: 600px;
-      display: block;
-      margin: 20px auto;
-      border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    /* IMAGE SIZES */
+    .story-image { width: 100%; max-width: 350px; display: block; margin: 20px auto; border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+    .compass-image { width: 100%; max-width: 250px; display: block; margin: 15px auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    .policy-image { width: 100%; max-width: 300px; display: block; margin: 15px auto; border-radius: 10px; opacity: 0.9; }
+    
+    /* STANDARDIZED AUTHOR IMAGES */
+    .author-images-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 20px 0; }
+    .author-img-standard { 
+        width: 100%; 
+        max-width: 300px; 
+        height: 400px; 
+        object-fit: cover; 
+        border-radius: 15px; 
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
+        border: 3px solid var(--accent-gold);
     }
 
-    .tula-text { 
-      text-align: center; 
-      font-style: italic; 
-      white-space: pre-line; 
-      color: #333; 
-      font-family: 'Playfair Display', serif; 
-      font-size: 1.25rem; 
-      background: #fffcf5; 
-      padding: 40px; 
-      border-radius: 15px; 
-      margin: 20px 0;
-      display: none;
-      line-height: 2;
-    }
+    .tula-text { text-align: center; font-style: italic; white-space: pre-line; color: #333; font-family: 'Playfair Display', serif; font-size: 1.25rem; background: #fffcf5; padding: 40px; border-radius: 15px; margin: 20px 0; display: none; line-height: 2; border: 1px solid #eee; }
     .tula-text.show { display: block; }
-
-    .obra-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-    }
-    .obra-item {
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    .obra-item img { width: 100%; height: auto; display: block; }
-    .obra-caption {
-      padding: 15px;
-      background: var(--primary-dark);
-      color: white;
-      text-align: center;
-    }
-
     .author-tag { display: block; text-align: right; font-weight: 600; color: var(--deep-red); margin-top: 20px; }
 
-    .poetry-menu { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
-    .p-btn {
-        background: white; border: 2px solid var(--deep-red); color: var(--deep-red);
-        padding: 8px 20px; border-radius: 30px; cursor: pointer; font-weight: 600;
-    }
+    /* POLICY STYLES */
+    .policy-list { list-style: none; padding: 0; }
+    .policy-item { background: #f9f9f9; padding: 15px; margin-bottom: 10px; border-radius: 10px; border-left: 4px solid var(--accent-gold); }
+    .policy-item strong { color: var(--deep-red); display: block; margin-bottom: 5px; }
+
+    /* CONTACT FORM */
+    .contact-form { margin-top: 30px; text-align: left; background: #fffcf0; padding: 25px; border-radius: 15px; border: 1px solid var(--accent-gold); }
+    .contact-form h3 { font-family: 'Playfair Display', serif; color: var(--deep-red); margin-bottom: 10px; }
+    .contact-form input, .contact-form textarea { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Poppins', sans-serif; }
+    .contact-form button { background: var(--deep-red); color: white; border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; font-weight: 600; transition: 0.3s; }
+    .contact-form button:hover { background: var(--primary-dark); }
+
+    #backToTop { position: fixed; bottom: 30px; right: 30px; background: var(--deep-red); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; display: none; z-index: 2000; font-size: 1.5rem; }
+    
+    footer { text-align: center; padding: 60px 20px; background: #1a1a1a; color: white; margin-top: 60px; border-top: 5px solid var(--accent-gold); }
+    .divider { height: 2px; background: linear-gradient(to right, transparent, var(--accent-gold), transparent); margin: 30px 0; }
+    .p-btn { background: white; border: 2px solid var(--deep-red); color: var(--deep-red); padding: 8px 20px; border-radius: 30px; cursor: pointer; font-weight: 600; margin: 5px; }
     .p-btn.active { background: var(--deep-red); color: white; }
 
-    .portrait { width: 220px; height: 220px; border-radius: 50%; object-fit: cover; border: 5px solid var(--accent-gold); margin-bottom: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-
-    /* FOOTER STYLES */
-    footer { 
-      text-align: center; 
-      padding: 80px 20px; 
-      background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)), 
-                  url('https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1500&auto=format&fit=crop') center/cover;
-      color: white; 
-      margin-top: 60px; 
-      border-top: 5px solid var(--accent-gold);
-    }
-    .divider { height: 2px; background: linear-gradient(to right, transparent, var(--accent-gold), transparent); margin: 30px 0; }
+    /* EDUC 322 SUB-SECTIONS */
+    .educ-sub-content { display: none; animation: fadeIn 0.5s ease; }
+    .educ-sub-content.show { display: block; }
   </style>
 </head>
 <body>
 
-<header id="pageHeader">
+<div class="music-container">
+    <div class="music-info">BGM: Soft Academic Piano</div>
+    <audio id="bgm" loop preload="auto">
+        <source src="https://stream.zeno.fm/0r0xa792kwzuv" type="audio/mpeg">
+    </audio>
+    <button onclick="toggleMusic()" id="musicBtn" style="background: var(--deep-red); color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold;">PLAY ♫</button>
+</div>
+
+<button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+<header>
   <h1>Pintig ng Panitikan</h1>
   <p id="headerSub">Digital Portfolio</p>
 </header>
@@ -222,15 +222,11 @@
 <div class="container">
     
     <div id="portal" class="tab-content active">
-        
-        <div class="about-section">
-            <h2 style="font-family: 'Great Vibes', cursive; font-size: 3.5rem;">Tungkol sa Website</h2>
-            <p>Ang <strong>Pintig ng Panitikan</strong> ay isang digital na imbakan ng mga piling akda at karanasan sa pagkatuto. Layunin nitong ipakita ang ganda ng literaturang Pilipino at ang naging paglalakbay ng may-akda sa larangan ng edukasyon at sining.</p>
-        </div>
-
-        <div class="card" style="text-align: center; margin-bottom: 40px;">
-            <h2 style="border:none;">Maligayang Pagdating!</h2>
-            <p>Pumili ng kategorya sa ibaba upang simulan ang paglalakbay sa mundo ng panitikan at karunungan.</p>
+        <div class="card" style="text-align: center; border: 2px dashed var(--accent-gold);">
+            <h2 style="font-family: 'Great Vibes', cursive; font-size: 3.5rem;">Maligayang Pagdating</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 15px;">Ang <strong>Pintig ng Panitikan</strong> ay isang digital na tahanan na nagtatampok sa mga malikhaing akda at sa masining na paglalakbay ng may-akda tungo sa mas malalim na pagkatuto.</p>
+            <div class="divider" style="margin: 20px auto; width: 50%;"></div>
+            <p style="font-style: italic; color: #555; font-size: 1.2rem;">Halina’t buksan ang pintuan ng kaalaman—pumili ng kategorya sa ibaba upang simulan ang ating paglalakbay.</p>
         </div>
 
         <div class="portal-grid">
@@ -243,7 +239,7 @@
                 <div class="card-body"><h3>EDUC 322</h3></div>
             </div>
             <div class="subject-card" onclick="showSubject('author')">
-                <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t39.30808-6/571338837_1498976374646125_5315476881921656249_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFbNAqdaQV0y4psfzf22tD1_dZAHxePwQj91kAfF4_BCGxvq758UwWIZf9bU1FQ6PPtqKUXRYZkTl41cmRc3dpx&_nc_ohc=AsLAZ0oDzmcQ7kNvwHhPhso&_nc_oc=AdnFItO-eWTdYfkqkBTvLrpRfD9Wz4eY_Y6SHnmb7GvD7mVjcLLP67Scgs76x_9ZONE&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=Xk2Ux_Gf-5t_i7HmwGQ_1Q&oh=00_AftqagclQ9QKKpUaugtFK_ejiCc03gEvBFp9Ehn--5eFxw&oe=69890A7D" class="card-img">
+                <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t39.30808-6/571338837_1498976374646125_5315476881921656249_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFbNAqdaQV0y4psfzf22tD1_dZAHxePwQj91kAfF4_BCGxvq758UwWIZf9bU1FQ6PPtqKUXRYZkTl41cmRc3dpx&_nc_ohc=AsLAZ0oDzmcQ7kNvwHPhso&_nc_oc=AdnFItO-eWTdYfkqkBTvLrpRfD9Wz4eY_Y6SHnmb7GvD7mVjcLLP67Scgs76x_9ZONE&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=Xk2Ux_Gf-5t_i7HmwGQ_1Q&oh=00_AftqagclQ9QKKpUaugtFK_ejiCc03gEvBFp9Ehn--5eFxw&oe=69890A7D" class="card-img">
                 <div class="card-body"><h3>MAY-AKDA</h3></div>
             </div>
         </div>
@@ -251,9 +247,8 @@
 
     <div id="tula" class="tab-content">
         <div class="card">
-            <img src="https://static.vecteezy.com/system/resources/previews/024/618/840/non_2x/antique-quill-pen-writes-elegant-calligraphy-on-parchment-document-generated-by-ai-free-photo.jpg" class="section-banner">
             <h2>Koleksyon ng mga Tula</h2>
-            <div class="poetry-menu">
+            <div style="text-align: center; margin-bottom: 30px;">
                 <button class="p-btn active" onclick="showPoem('p1', this)">Ilaw ng Tahanan</button>
                 <button class="p-btn" onclick="showPoem('p2', this)">Dos-Dos</button>
                 <button class="p-btn" onclick="showPoem('p3', this)">Yo soy tu comienzo</button>
@@ -362,38 +357,23 @@
 
     <div id="kwento" class="tab-content">
         <div class="card">
-            <h2>Maikling Kwento</h2>
-            <h3 style="text-align: center; color: var(--deep-red); font-size: 2.2rem; margin-bottom: 20px;">Ang Luhang Nagyelo</h3>
-            
-            <img src="https://scontent.fmnl17-8.fna.fbcdn.net/v/t39.30808-6/626443111_1575253070351788_3686587151834369920_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGfzB6wW8VSEJblddVk52YgNocm-kD8cI02hyb6QPxwjZ0ztBZ7auRKYEvePZPgAhMWxvIs4bNpy6DrtiVMj4O5&_nc_ohc=vvGlXMk4ceUQ7kNvwHllYJ6&_nc_oc=AdlltB-xndtKvwofby6QWaekwpuqBpg8IXXZAjMJ71bKf3acVRmdKWdvTqMc5qZviJc&_nc_zt=23&_nc_ht=scontent.fmnl17-8.fna&_nc_gid=99pusyzSMaXbtjeNrfFoIA&oh=00_AfuECTKlMHrfQKhSqx2Yv4a7xnBc-bQutr67y6NnLHNgNw&oe=6988FAC6" class="story-image" alt="Ang Luhang Nagyelo Illustration">
-
+            <h2>Maikling Kwento: Ang Luhang Nagyelo</h2>
+            <img src="https://scontent.fmnl17-8.fna.fbcdn.net/v/t39.30808-6/626443111_1575253070351788_3686587151834369920_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGfzB6wW8VSEJblddVk52YgNocm-kD8cI02hyb6QPxwjZ0ztBZ7auRKYEvePZPgAhMWxvIs4bNpy6DrtiVMj4O5&_nc_ohc=vvGlXMk4ceUQ7kNvwHllYJ6&_nc_oc=AdlltB-xndtKvwofby6QWaekwpuqBpg8IXXZAjMJ71bKf3acVRmdKWdvTqMc5qZviJc&_nc_zt=23&_nc_ht=scontent.fmnl17-8.fna&_nc_gid=99pusyzSMaXbtjeNrfFoIA&oh=00_AfuECTKlMHrfQKhSqx2Yv4a7xnBc-bQutr67y6NnLHNgNw&oe=6988FAC6" class="story-image">
             <div class="story-text">
                 <p>Sa malamig na lungsod ng Tagaytay, sa tuktok ng burol na tinatanaw ang lawa, nakatindig ang mansyon ng pamilyang Montenegro—isa sa mga pinakagalang na angkan ng lipunan. Si Don Armando Montenegro, isang negosyanteng tinitingala sa industriya ng agham at teknolohiya, ay may asawang si Doña Celia, isang babaeng kilala sa kabaitan at karangyaan. Mayroon silang tatlong anak na lalaki: si Eros, ang tahimik at responsable; si Mavin, ang siyentipikong abala sa mga eksperimento; at si Levi, ang bunsong bulag na may pusong mas maliwanag pa sa sinag ng araw.</p>
-                
-                <p>Ngunit hindi lang sila tatlo. May isa pang batang babae sa kanilang tahanan—si Amara, ang batang inampon nila labingwalong taon na ang nakalipas. Si Amara ang liwanag ng mansyon. Matiisin, magalang, at puno ng malasakit. Siya ang tumutulong sa lahat, umaalalay kay Levi, at nagpapasigla sa tahanan ng mga Montenegro. Bagaman hindi siya kadugo, walang sinuman sa pamilya ang tumingin sa kanya bilang “iba.” Sa mga mata ni Don Armando at Doña Celia, siya ay anak. Sa mga mata ng tatlong lalaki, siya ay kapatid. Sa mga mata ng Diyos, siya ay isang biyaya.</p>
-                
+                <p>Ngunit hindi lang sila tatlo. May isa pang batang babae sa kanilang tahanan—si Amara, ang batang inampon nila labingwalong taon na ang nakalipas. Si Amara ang liwanag ng mansyon. Matiisin, magalang, at puno ng malasakit. Siya ang tumutulong sa lahat, umaalalay kay Levi, at nagpapasigla sa tahanan ng mga Montenegro. Bagaman hindi siya kadugo, walang sinuman sa pamilya ang tumingin sa kanya bilang “iba.” Sa mga mouth ni Don Armando at Doña Celia, siya ay anak. Sa mga mata ng tatlong lalaki, siya ay kapatid. Sa mga mata ng Diyos, siya ay isang biyaya.</p>
                 <p>Ngunit isang araw, tatlong araw bago ang ika-18 kaarawan ni Amara, dumating ang balitang magpapayanig sa kanilang mundo. May isang babaeng natagpuan mula sa orphanage—nawawala raw noong sanggol pa, at ayon sa DNA test, siya ang tunay na anak nina Don Armando at Doña Celia. Ang pangalan niya ay Celestine. Maganda si Celestine, edukada, at mabuting magsalita. Agad siyang tinanggap ng pamilya. Ngunit sa likod ng kanyang ngiti ay may halong inggit—isang galit na umuukit sa puso tuwing makikita niyang minamahal si Amara. Habang lumilipas ang mga araw, unti-unti niyang giniba ang tiwala ng pamilya sa ampon nilang anak.</p>
-                
-                <p>Isang hapon sa veranda, habang magkasamang nag-aayos ng mga bulaklak sina Amara at Celestine, biglang napasigaw ang huli. “Araaay! Tinulak ako ni Amara!” Nataranta si Doña Celia. Nakita niya si Celestine sa sahig, si Amara nama’y hawak ang gunting ng halaman, tulalang nakatingin. “Hindi po totoo! Nadulas lang siya!” Ngunit dahil sa luha ni Celestine, naniwala agad ang ina. “Amara,” malamig na wika ni Doña Celia, “huwag mong hayaang lamunin ka ng inggit.”</p>
-                
+                <p>Isang hapon sa veranda, habang magkasamang nag-aayos ng mga bulaklak sina Amara at Celestine, biglang napasigaw ang huli. “Araaay! Tinulak ako ni Amara!” Nataranta si Doña Celia. Nakita niya si Celestine sa sahig, si Amara naman’y hawak ang gunting ng halaman, tulalang nakatingin. “Hindi po totoo! Nadulas lang siya!” Ngunit dahil sa luha ni Celestine, naniwala agad ang ina. “Amara,” malamig na wika ni Doña Celia, “huwag mong hayaang lamunin ka ng inggit.”</p>
                 <p>Kinabukasan, lumapit si Celestine na may pulang pisngi. “Mama… sinampal ako ni Amara. Sabi niya, hindi raw ako bagay dito.” Natahimik ang pamilya. Si Amara, na noon ay nagluluto, ay napatingin kay Doña Celia. “Hindi ko siya sinaktan…” Ngunit tanging buntong-hininga ang isinukli ng ina. “Anak, pagbigyan mo na siya. Siguro may pinagdadaanan lang.”</p>
-                
-                <p>Ilang araw pa ang lumipas. Habang naghahanda si Amara ng hapunan, lumapit si Celestine at biglang sumigaw. “Tulong! Gusto niyang itusok ‘tong tinidor sa akin!” Agad na napasugod ang lahat. Si Amara ay natigilan, hawak pa rin ang tinidor na panluto. Hindi na siya nakapagsalita. Ang malamig na tingin ni Don Armando ay parang pader na hindi niya matibag. Mula noon, nawala ang sigla ng bahay. Ang bawat hapag ay tahimik. Ang mga ngiti ni Doña Celia ay napalitan ng pag-aalinlangan. Si Levi lamang ang patuloy na kumakapit kay Amara. “Hindi mo kailangang magsalita, Ate. Nakikita ng puso ko kung sino ang totoo.” Ngunit bulag si Levi, at walang nakaririnig sa kanyang paniniwala.</p>
-                
+                <p>Ilang araw pa ang lumipas. Habang naghahanda si Amara ng hapunan, lumapit si Celestine at biglang sumigaw. “Tulong! Gusto niyang itusok ‘tong tinidor sa akin!” Agad na napasugod ang lahat. Si Amara ay natigilan, hawak pa rin ang tinidor na panluto. Hindi na siya nakapagsalita. Ang malamig na tinig ni Don Armando ay parang pader na hindi niya matibag. Mula noon, nawala ang sigla ng bahay. Ang bawat hapag ay tahimik. Ang mga ngiti ni Doña Celia ay napalitan ng pag-aalinlangan. Si Levi lamang ang patuloy na kumakapit kay Amara. “Hindi mo kailangang magsalita, Ate. Nakikita ng puso ko kung sino ang totoo.” Ngunit bulag si Levi, at walang nakaririnig sa kanyang paniniwala.</p>
                 <p>Dumating ang ika-18 kaarawan ni Amara. Makulay ang gabi, puno ng mga ilaw, tugtugin, at mamahaling handog. Ngunit sa gitna ng kasiyahan, muling sumigaw si Celestine: “Tulungan ninyo ako! Tinulak ako ni Amara! Gusto niya akong saktan!” Napatigil ang lahat. Si Amara’y natigilan, hawak ang bulaklak na iaabot sana sa kanyang mga magulang. “Hindi ko siya tinulak…” Ngunit ang tinig ni Doña Celia ay mas matalim pa sa hangin. “Tama na, Amara! Lumayas ka! Hindi mo na kami maloloko!” Walang lumapit. Ni si Eros, ni si Mavin. Basang-basa ng ulan, umalis si Amara, tangan ang bigat ng kawalang-katarungan. “Salamat po sa lahat,” bulong niya bago tuluyang maglaho sa dilim.</p>
-                
                 <p>Makalipas ang ilang araw, tahimik ang mansyon. Ang bawat hapag ay malamig. Ang bawat gabi ay mahaba. Hanggang isang gabi, habang nag-aayos ng data sa laboratoryo si Mavin, napansin niyang gumagana pa ang lumang CCTV system. Pinanood niya ito at doon niya nakita ang katotohanan. Si Celestine mismo ang sinasaktan ang sarili. Sinasampal ang sariling mukha, tinutulak ang sarili sa dingding, habang umiiyak sa salamin: “Hindi ako papayag… ako ang anak nila… ako, hindi siya…”</p>
-                
                 <p>Isa-isa nilang pinanood ang lahat. Ang mga paratang kay Amara ay pawang kasinungalingan. Si Doña Celia ay napahawak sa dibdib, si Don Armando ay hindi makapagsalita. Ngunit bago nila maharap si Celestine, bigla itong bumagsak sa sala, humihingal, halos hindi na huminga. Dinala nila ito sa ospital. Pagkatapos ng pagsusuri, lumapit ang doktor. “May malubhang sakit sa puso ang dalaga. Ngunit wala sa inyong lahi ang ganitong karamdaman. At higit sa lahat… iba ang blood type niya. Siya ay B-positive, samantalang kayong mag-asawa ay parehong A.”</p>
-                
                 <p>Napatigil ang lahat. Nagmulat si Celestine, nanghihina, ngunit umiiyak. “Mama… Papa…” “Anak, huwag ka nang magsalita,” sabi ni Doña Celia, nanginginig. Ngunit pinilit niyang magsalita. “Hindi ako ang anak ninyo… Yung pinalayas ninyo… si Amara… siya ang tunay n’yong anak.” Tumulo ang luha ni Doña Celia. “Bakit mo ginawa ito, anak?” “Dahil gusto kong maranasan kung paano magmahal ang mga magulang,” mahinang sagot ni Celestine. “Pero kahit kailan… hindi ko kayang pantayan si Amara.” At bago siya tuluyang mawalan ng malay, bumulong siya: “Hanapin n’yo siya… bago huli ang lahat.”</p>
-                
                 <p>Pagbalik sa mansyon, sinubukan ni Mavin na buksan ang mga lumang file ng kanyang eksperimento at doon niya nakita ang nakagugulat na katotohanan: Test Subject 0007 – Amara Montenegro. Cryogenic Preservation: 30 Years. Kasama ang isang liham mula kay Amara: “Kuya Mavin, kung kailangan mo ng boluntaryo sa proyekto mo, ako na lang. Ang pag-aaruga n’yo sa akin ay sapat na. Salamat sa lahat.” At sa tabi ng liham, may isa pang dokumento ng donasyon: ‘Donor: Amara Montenegro – Cornea for Levi Montenegro.’ Doon nila napagtanto—ang paningin ni Levi ay galing sa kanya. Ang liwanag na mayroon siya ay ibinigay ni Amara, sa kabila ng lahat ng sakit na idinulot nila.</p>
-                
-                <p>Tatlongpung taon ang lumipas. Binuksan ni Mavin ang cryo-chamber. Umuusok, malamig, at tila huminto ang oras. Dahan-dahang dumilat si Amara. Nakatayo sa harap niya ang mga Montenegro—matanda na, nanginginig, ngunit sabik. Lumapit si Doña Celia, may luha sa pisngi. “Anak… patawad… bumalik ka na sa amin.” Ngunit tumingin lamang si Amara, malamig ang mga mata, walang luha, walang galit, walang saya. “Sino kayo?” mahina niyang tanong.</p>
-                
+                <p>Tatlongpung tanon ang lumipas. Binuksan ni Mavin ang cryo-chamber. Umuusok, malamig, at tila huminto ang oras. Dahan-dahang dumilat si Amara. Nakatayo sa harap niya ang mga Montenegro—matanda na, nanginginig, ngunit sabik. Lumapit si Doña Celia, may luha sa pisngi. “Anak… patawad… bumalik ka na sa amin.” Ngunit tumingin lamang si Amara, malamig ang mga mata, walang luha, walang galit, walang saya. “Sino kayo?” mahina niyang tanong.</p>
                 <p>Tahimik ang silid. Tanging ugong ng makina ang maririnig. At doon nila napagtanto na ang pinakamasakit na parusa ay hindi kamatayan, kundi ang hindi ka na makilala ng taong minsan mong itinaboy. Ang yelo sa katawan ni Amara ay natunaw, ngunit ang luha na minsan niyang iniyakan ay matagal nang nagyelo—at kasama nitong natabunan ang lahat ng init ng pagmamahal na minsan ay kanyang inalay.</p>
-                <p> <span class="author-tag">— Wakas</span> </p>
+                <span class="author-tag">— Wakas</span>
             </div>
         </div>
     </div>
@@ -403,54 +383,128 @@
           <h2>Mga Obra</h2>
           <div class="obra-grid">
             <div class="obra-item">
-              <img src="https://scontent.fmnl17-3.fna.fbcdn.net/v/t39.30808-6/626806199_1573622087181553_6730148972782488813_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeESrA38MGh_YWH83ZE-h1W3Go4HQRq4iu0ajgdBGriK7YNUOf4Mvpm9jX4AoF5YCrBa7pZ-SNRNpBQoelt3FxHP&_nc_ohc=-QDIzBcaJfQQ7kNvwHPkCTK&_nc_oc=AdmR581phZSsBRNiurO9l6IcPvm9ORFCv-wp1Xu-zmk1ZbrHFh_IEdSIcpZZ6CA1ouE&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&_nc_gid=1AmsUhSQkRM70mCOxiFkxw&oh=00_AftKCMiIQEl1AhF4y8TU66gMU3wddojh3ryTeRI2REvWKg&oe=69890AC0" alt="Obra 1">
-              <div class="obra-caption">Malikhaing pagdidisenyo sa keychain</div>
+              <img src="https://scontent.fmnl17-3.fna.fbcdn.net/v/t39.30808-6/626806199_1573622087181553_6730148972782488813_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeESrA38MGh_YWH83ZE-h1W3Go4HQRq4iu0ajgdBGriK7YNUOf4Mvpm9jX4AoF5YCrBa7pZ-SNRNpBQoelt3FxHP&_nc_ohc=-QDIzBcaJfQQ7kNvwHPkCTK&_nc_oc=AdmR581phZSsBRNiurO9l6IcPvm9ORFCv-wp1Xu-zmk1ZbrHFh_IEdSIcpZZ6CA1ouE&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&_nc_gid=1AmsUhSQkRM70mCOxiFkxw&oh=00_AftKCMiIQEl1AhF4y8TU66gMU3wddojh3ryTeRI2REvWKg&oe=69890AC0">
+              <div class="obra-overlay">Malikhaing pagdidisenyo sa keychain</div>
             </div>
             <div class="obra-item">
-              <img src="https://scontent.fmnl17-3.fna.fbcdn.net/v/t39.30808-6/626842257_1573622203848208_6134022917010301842_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGs0m2QDDs4j3-NYjtU-DmYSQyRUO99mkdJDJFQ732aR_lfLnlSh_m-YH6V1s7AbG33Dto3d1tXzyNmCOBgNoBx&_nc_ohc=an6CVNZIMnEQ7kNvwHIOvvU&_nc_oc=AdkxxrVM5VHkAmwL1Wj1TA6Y5CBeJY-KtdwgFu9c2Cu3u1hhKs2z43ryi1_WHHPg2w8&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&_nc_gid=MqAiWiWoKbQZfdsSjsUDaA&oh=00_AfuNSXJNBAg61zmpXIhxai0psJAm_g0MGDakgXW9upMLuA&oe=698916DD" alt="Obra 2">
-              <div class="obra-caption">Malikhaing pagdidisenyo sa keychain</div>
+              <img src="https://scontent.fmnl17-3.fna.fbcdn.net/v/t39.30808-6/626842257_1573622203848208_6134022917010301842_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGs0m2QDDs4j3-NYjtU-DmYSQyRUO99mkdJDJFQ732aR_lfLnlSh_m-YH6V1s7AbG33Dto3d1tXzyNmCOBgNoBx&_nc_ohc=an6CVNZIMnEQ7kNvwHIOvvU&_nc_oc=AdkxxrVM5VHkAmwL1Wj1TA6Y5CBeJY-KtdwgFu9c2Cu3u1hhKs2z43ryi1_WHHPg2w8&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&_nc_gid=MqAiWiWoKbQZfdsSjsUDaA&oh=00_AfuNSXJNBAg61zmpXIhxai0psJAm_g0MGDakgXW9upMLuA&oe=698916DD">
+              <div class="obra-overlay">Malikhaing pagdidisenyo sa keychain</div>
             </div>
           </div>
         </div>
     </div>
 
-    <div id="learning" class="tab-content">
-        <div class="card">
-            <h2>Learning Journey</h2>
-            <p style="text-align:center;">Dito ilalagay ang mga repleksyon para sa asignaturang EDUC 322.</p>
+    <div id="author" class="tab-content">
+        <div class="card" style="text-align: center;">
+            <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t39.30808-6/571338837_1498976374646125_5315476881921656249_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFbNAqdaQV0y4psfzf22tD1_dZAHxePwQj91kAfF4_BCGxvq758UwWIZf9bU1FQ6PPtqKUXRYZkTl41cmRc3dpx&_nc_ohc=AsLAZ0oDzmcQ7kNvwHPhso&_nc_oc=AdnFItO-eWTdYfkqkBTvLrpRfD9Wz4eY_Y6SHnmb7GvD7mVjcLLP67Scgs76x_9ZONE&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=Xk2Ux_Gf-5t_i7HmwGQ_1Q&oh=00_AftqagclQ9QKKpUaugtFK_ejiCc03gEvBFp9Ehn--5eFxw&oe=69890A7D" style="width: 250px; height: 250px; border-radius: 50%; object-fit: cover; border: 5px solid var(--accent-gold); margin-bottom: 20px;">
+            <h2>Angelica Cruzat</h2>
+            <p>BSED FILIPINO III | Mindoro State University</p>
+            <div class="divider"></div>
+            <div class="story-text" style="text-align: left;">
+                <p>Hello! I am <strong>Angelica Cruzat</strong>, coming all the way from Poblacion III, Tamaraw, Victoria, Oriental Mindoro. I am currently a 3rd-year student taking up Bachelor of Secondary Education Major in Filipino at Mindoro State University. Above all, I am a dedicated student, a loving child to my parents, and a woman of many dreams.</p>
+                <p>If I’m being honest, my heart was originally set on the skies. My dream was to be a Flight Attendant. However, my parents decided that I should pursue teaching instead. At first, it was really hard for me. It’s difficult to force yourself into something that wasn’t your first choice. But as time went by, I slowly fell in love with it. Now, I can finally see myself standing in front of a classroom, happily sharing knowledge and inspiring my future students.</p>
+                
+                <div class="author-images-row">
+                    <img src="https://scontent.fmnl17-6.fna.fbcdn.net/v/t39.30808-6/626747756_1575322953678133_4655670040807791223_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHq62vgo8eEko4v3dw1lUi62NQYaSbsC1DY1BhpJuwLUNHf5_ZDgn2FCVanbcWT8OSEfSBjrw80qfsmdlZrMZRK&_nc_ohc=b7KDEyRZ3noQ7kNvwGrM7gV&_nc_oc=AdnZzi8x433BBba0x1_YuxwshukhaKxgu5eSHost7wuIp3obgrT3ehu5eX0kWvtFGZg&_nc_zt=23&_nc_ht=scontent.fmnl17-6.fna&_nc_gid=mgj3zhh2afxnyKPvcbI0vQ&oh=00_Afu_ABZ67gjXioNnn7v4D1LgKOd0YnxotOlZtCQ6EeD4Cw&oe=698BCE52" class="author-img-standard">
+                    <img src="https://scontent.fmnl17-3.fna.fbcdn.net/v/t39.30808-6/627547542_1575323060344789_2828105545805608648_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGUh5w-__qreDGlyuUL0lReilhSZb5gjC-KWFJlvmCML7f44eCCMTvHsSvoofkEsqfnl9V7eM3LQmq_6Nd_WFC3&_nc_ohc=d1meH-rYWZUQ7kNvwEnCmR8&_nc_oc=AdnW6e60yfa8PBQXrtyL3rN7T08-bNF4DiagTV2QRgz8B-r8D53_p2mb6LDfO1CT-Mw&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&_nc_gid=pn75KSjNdqvCbQcJv6lZAQ&oh=00_AfscEG9SllfHvzXJ00S1Y23KuFsySCY4pQUCYcUbCFcoNQ&oe=698BD943" class="author-img-standard">
+                </div>
+
+                <h4 style="color:var(--deep-red); margin-bottom: 15px;">A few fun facts about me:</h4>
+                <ul>
+                    <li><strong>Coffee Enthusiast:</strong> I am fueled by caffeine! I usually drink five cups of coffee a day to keep me going through my busy schedule.</li>
+                    <li><strong>A Beauty Queen’s Journey:</strong> I was once a Beauty Queen. There was a time when I lost my self-confidence, but joining pageants helped me find myself again. It taught me how to be brave and believe in what I can do.</li>
+                    <li><strong>Student and Daughter:</strong> Balancing my life as a student and a responsible child is my priority. I want to make my parents proud in the path they chose for me, which has now become the path I truly love.</li>
+                </ul>
+                <p style="margin-top: 20px; font-style: italic; color: var(--primary-dark);">From dreaming of flying to finding my purpose in teaching, I am now ready to help my students reach their own dreams.</p>
+                
+                <div class="author-images-row">
+                    <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t39.30808-6/626167706_1575323150344780_8831545694162878292_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHMKMlvf5NsckptLl_Jy94HeZKrou6xOPJ5kqui7rE48tkLs5hvHJUsOVq0mPaGK2gSquys-GHS6uVhNr_hQPRM&_nc_ohc=x53oNliwrwgQ7kNvwGGhE0c&_nc_oc=Admcwln9weoIlSmUzm-hw1-8QMfeg0QG43J9ntO4s0Cw3bVBch9ASW7lU95-UogXY_c&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=3bEpwEvsEB3PbMkKaiswLw&oh=00_AftbSBbV58ty_rRwyB0LwLAYZ1c-T5gAM5_vIKl4JFzbCA&oe=698BBFF3" class="author-img-standard" alt="Angelica in Blue Dress">
+                    <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t39.30808-6/625935857_1575323240344771_2024542763545952733_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEUeQCwM1qSxz5fSFGUDO4X3tTDsuD752re1MOy4PvnahO1kHJZrivRTfQ5W5o2F_kVpCw9_YbSO4FktaCo5CRN&_nc_ohc=Q14-9CCNAb0Q7kNvwGFPstJ&_nc_oc=AdmV7pZL9PalNmIS8fGdG0BOnnymoOJB5ssKl39gUO92B-LJMetjbP4jqu_Xmy4yqwI&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=R5c4yZ6zzhGThv_dUPakeA&oh=00_AftdyaFvXv-5kDWh1HkJNvHBXmiYKIKQRCTjWz0OF38JNg&oe=6989123B" class="author-img-standard">
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>Sulat sa May-akda</h3>
+                <p style="font-size: 0.85rem; margin-bottom: 10px;">Gusto mo bang mag-iwan ng mensahe o feedback?</p>
+                <form onsubmit="alert('Salamat! Ang iyong mensahe ay naipadala na.'); return false;">
+                    <input type="text" placeholder="Pangalan" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <textarea rows="3" placeholder="Iyong mensahe..." required></textarea>
+                    <button type="submit">Ipadala ang Sulat</button>
+                </form>
+            </div>
         </div>
     </div>
 
-    <div id="author" class="tab-content">
+    <div id="learning" class="tab-content">
         <div class="card" style="text-align: center;">
-            <h2>Profile ng May-akda</h2>
-            <div class="divider"></div>
-
-            <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t39.30808-6/571338837_1498976374646125_5315476881921656249_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFbNAqdaQV0y4psfzf22tD1_dZAHxePwQj91kAfF4_BCGxvq758UwWIZf9bU1FQ6PPtqKUXRYZkTl41cmRc3dpx&_nc_ohc=AsLAZ0oDzmcQ7kNvwHhPhso&_nc_oc=AdnFItO-eWTdYfkqkBTvLrpRfD9Wz4eY_Y6SHnmb7GvD7mVjcLLP67Scgs76x_9ZONE&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=Xk2Ux_Gf-5t_i7HmwGQ_1Q&oh=00_AftqagclQ9QKKpUaugtFK_ejiCc03gEvBFp9Ehn--5eFxw&oe=69890A7D" class="portrait" alt="Anlicxx Profile Picture">
-            <h3 style="font-size: 2.5rem; color: var(--deep-red); font-family: 'Playfair Display', serif;">Angelica Cruzat</h3>
-            <p style="font-weight: 600; color: var(--primary-dark);">BSED FILIPINO III | Mindoro State University</p>
+            <h2 style="font-family: 'Playfair Display', serif; color: var(--deep-red);">EDUC 322</h2>
+            <p style="font-style: italic; margin-bottom: 25px;">Pumili ng nais tingnan sa ibaba:</p>
             
-            <div class="story-text" style="margin-top: 30px; text-align: left;">
-                <p style="font-style: italic; text-align: center; text-indent: 0; color: var(--deep-red);">"Do you want to know more about me?"</p>
-                
-                <p>Hello! I am <strong>Angelica Cruzat</strong>, coming all the way from Poblacion III, Tamaraw, Victoria, Oriental Mindoro. I am currently a 3rd-year student taking up Bachelor of Secondary Education Major in Filipino at Mindoro State University. Above all, I am a dedicated student, a loving child to my parents, and a woman of many dreams.</p>
-                
-                <img src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t39.30808-6/625935857_1575323240344771_2024542763545952733_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEUeQCwM1qSxz5fSFGUDO4X3tTDsuD752re1MOy4PvnahO1kHJZrivRTfQ5W5o2F_kVpCw9_YbSO4FktaCo5CRN&_nc_ohc=Q14-9CCNAb0Q7kNvwGFPstJ&_nc_oc=AdmV7pZL9PalNmIS8fGdG0BOnnymoOJB5ssKl39gUO92B-LJMetjbP4jqu_Xmy4yqwI&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=R5c4yZ6zzhGThv_dUPakeA&oh=00_AfsdyaFvXv-5kDWh1HkJNvHBXmiYKIKQRCTjWz0OF38JNg&oe=6989123B" class="story-image" alt="Author Additional Image">
+            <div style="margin-bottom: 30px;">
+                <button class="p-btn active" onclick="showEducSub('compass-sec', this)">My Living Compass</button>
+                <button class="p-btn" onclick="showEducSub('policy-sec', this)">PATAKARAN</button>
+            </div>
 
-                <p>If I’m being honest, my heart was originally set on the skies. My dream was to be a <strong>Flight Attendant</strong>. However, my parents decided that I should pursue teaching instead. At first, it was really hard for me. It’s difficult to force yourself into something that wasn’t your first choice. But as time went by, I slowly fell in love with it. Now, I can finally see myself standing in front of a classroom, happily sharing knowledge and inspiring my future students.</p>
+            <div id="compass-sec" class="educ-sub-content show">
+                <img src="https://scontent.fmnl17-7.fna.fbcdn.net/v/t39.30808-6/626701217_1577121603498268_8926972954172620578_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFOU0T40cL8Z2GFi6TW0ylonroriTeD8mieuiuJN4PyaDsTSI-OxniUbp1YHWnzrDu_B2O8mmnovubM6GT2WEwl&_nc_ohc=LlVsa5bpLsMQ7kNvwFUGM_V&_nc_oc=AdnnDmGpuWz5uVWuPufenjBEROme-uMcZNyQEpCGtiP8F0TuQFaQQoHzQY1sVfMb5Y8&_nc_zt=23&_nc_ht=scontent.fmnl17-7.fna&_nc_gid=BPgrjCLheBSgDW0KUhEKag&oh=00_Afu-eIkxg_LjZVB-nV5UTWh7V04ZiEe5EZtCHtlYIK2Jqw&oe=698BA9DD" class="compass-image" alt="My Living Compass Image">
+                <div class="tula-text show" style="background: #fdfdfd; border: 1px solid #ddd; margin-top: 10px;">
+                    <h3 style="color:var(--deep-red); font-family: 'Playfair Display', serif;">MY LIVING COMPASS</h3>
+                    
+                    In a world full of struggles and confusion
+                    You are the one who guide me in the right direction.
+                    In every decision I make
+                    You help in every step that I take. 
 
-                <div style="background: #fffcf5; padding: 25px; border-radius: 15px; border: 1px solid var(--accent-gold); margin-top: 20px;">
-                    <h4 style="color: var(--deep-red); margin-bottom: 10px;">✨ A few fun facts about me:</h4>
-                    <ul style="list-style: none; padding-left: 0;">
-                        <li style="margin-bottom: 10px;">☕ <strong>Coffee Enthusiast:</strong> I am fueled by caffeine! I usually drink five cups of coffee a day to keep me going through my busy schedule.</li>
-                        <li style="margin-bottom: 10px;">👑 <strong>A Beauty Queen’s Journey:</strong> I was once a Beauty Queen. There was a time when I lost my self-confidence, but joining pageants helped me find myself again. It taught me how to be brave and believe in what I can do.</li>
-                        <li>🏠 <strong>Student and Daughter:</strong> Balancing my life as a student and a responsible child is my priority. I want to make my parents proud in the path they chose for me, which has now become the path I truly love.</li>
-                    </ul>
+                    I don't need to look at the stars in the sky
+                    To find my the strength to spread my wings to fly
+                    No matter how hard the world makes me cry 
+                    You're the living compass on whom I rely. 
+
+                    You teach me how to stand and grow 
+                    You lift me up when I feel low 
+                    Through every dark, you light my way,
+                    And gives me courage to face each day. 
+
+                    When the world feels heavy and uncertain
+                    You're always there to remove the pain.
+                    So when I feel lose and all alone 
+                    You serve as my living compass and my guiding home 
+                    <span class="author-tag">— Angelica Cruzat</span>
                 </div>
+            </div>
 
-                <p style="text-align: center; font-weight: bold; margin-top: 25px; text-indent: 0;">
-                    From dreaming of flying to finding my purpose in teaching, I am now ready to help my students reach their own dreams.<br>
-                    <span style="font-family: 'Great Vibes', cursive; font-size: 2rem; color: var(--deep-red);">Mabuhay at Mahalta na!</span>
+            <div id="policy-sec" class="educ-sub-content">
+                <h3 style="font-family: 'Playfair Display', serif; color: var(--deep-red); margin-bottom: 5px;">II. PATAKARAN</h3>
+                <p style="font-style: italic; margin-bottom: 15px;">Asignatura: Filipino sa Piling Larang (Akademik)</p>
+                
+                <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=1000" class="policy-image" alt="Classroom vibes">
+
+                <div class="policy-list" style="text-align: left;">
+                    <div class="policy-item">
+                        <strong>1. Maging Maagap at Handa</strong>
+                        Ang bawat mag-aaral ay inaasahang pumasok sa tamang oras. Sa Filipino sa Piling Larang, ang bawat minuto ay mahalaga para sa ating mga pagsasanay sa pagsulat.
+                    </div>
+                    <div class="policy-item">
+                        <strong>2. Respeto sa Wikang Pambansa</strong>
+                        Hinihikayat ang lahat na gamitin ang wikang Filipino nang may pagmamalaki at kasanayan sa loob ng klase, lalo na sa mga pormal na talakayan at akademikong pagsulat.
+                    </div>
+                    <div class="policy-item">
+                        <strong>3. Katapatang Akademiko (Walang Plagiarism)</strong>
+                        Bilang mga manunulat, mahalaga ang orihinalidad. Ang anumang anyo ng pangongopya ay hindi pahihintulutan. Igalang natin ang intelektwal na pag-aari ng iba.
+                    </div>
+                    <div class="policy-item">
+                        <strong>4. Aktibong Pakikilahok</strong>
+                        Ang pagkatuto ay hindi lamang pakikinig kundi pakikibahagi. Huwag matakot magbahagi ng ideya; sa ating klase, walang maling opinyon, mayroon lamang iba't ibang pananaw.
+                    </div>
+                    <div class="policy-item">
+                        <strong>5. Kalinisan at Kaayusan</strong>
+                        Ang maayos na kaisipan ay nagmumula sa maayos na kapaligiran. Panatilihing malinis ang ating silid-aralan bago at pagkatapos ng ating talakayan.
+                    </div>
+                </div>
+                
+                <p style="font-size: 0.95rem; margin-top: 25px; font-weight: 600; color: var(--primary-dark);">
+                    "Ang disiplina ang susi sa mahusay na panulat at matagumpay na kinabukasan."
                 </p>
             </div>
         </div>
@@ -459,31 +513,46 @@
 </div>
 
 <footer>
-  <div class="divider"></div>
-  <div style="font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 10px;">Pintig ng Panitikan</div>
-  <p>© 2026 | Digital Portfolio by Anlicxx</p>
-  <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 15px; font-style: italic;">
-      "Sulat para sa nakaraan, sining para sa kasalukuyan, aral para sa kinabukasan."
-  </p>
+    <p>"Sulat para sa nakaraan, sining para sa kasalukuyan, aral para sa kinabukasan."</p>
+    <div class="divider" style="width: 20%; margin: 15px auto;"></div>
+    <p>&copy; 2026 Pintig ng Panitikan - Digital Portfolio ni ANLICXX</p>
 </footer>
 
 <script>
+    var audio = document.getElementById("bgm");
+    var btn = document.getElementById("musicBtn");
+    
+    function toggleMusic() {
+        if (audio.paused) {
+            audio.play().then(() => {
+                btn.innerHTML = "PAUSE ||";
+            }).catch(error => {
+                alert("Hindi pa handa ang audio. Subukan muli.");
+            });
+        } else {
+            audio.pause();
+            btn.innerHTML = "PLAY ♫";
+        }
+    }
+
+    window.onscroll = function() {
+        let btt = document.getElementById("backToTop");
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) btt.style.display = "block";
+        else btt.style.display = "none";
+    };
+
     function showSubject(subject) {
         document.getElementById('portal').style.display = 'none';
         document.getElementById('mainNav').style.display = 'flex';
         const allNavs = document.querySelectorAll('.nav-fil, .nav-educ, .nav-author');
         allNavs.forEach(b => b.style.display = 'none');
-        
         if(subject === 'fil') {
-            document.getElementById('headerSub').innerText = "FIL 211";
             document.querySelectorAll('.nav-fil').forEach(b => b.style.display = 'inline-block');
             openTab(null, 'tula');
         } else if(subject === 'educ') {
-            document.getElementById('headerSub').innerText = "EDUC 322";
             document.querySelectorAll('.nav-educ').forEach(b => b.style.display = 'inline-block');
             openTab(null, 'learning');
         } else if(subject === 'author') {
-            document.getElementById('headerSub').innerText = "May-akda";
             document.querySelectorAll('.nav-author').forEach(b => b.style.display = 'inline-block');
             openTab(null, 'author');
         }
@@ -499,18 +568,24 @@
         window.scrollTo({top: 450, behavior: 'smooth'});
     }
 
+    function showEducSub(id, btn) {
+        document.querySelectorAll('.educ-sub-content').forEach(el => el.classList.remove('show'));
+        document.querySelectorAll('#learning .p-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(id).classList.add('show');
+        btn.classList.add('active');
+    }
+
     function goHome() {
         document.getElementById('mainNav').style.display = 'none';
         const contents = document.getElementsByClassName('tab-content');
         for(let c of contents) c.style.display = 'none';
         document.getElementById('portal').style.display = 'block';
-        document.getElementById('headerSub').innerText = "Digital Portfolio";
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
     function showPoem(id, btn) {
-        document.querySelectorAll('.tula-text').forEach(p => p.classList.remove('show'));
-        document.querySelectorAll('.p-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('#tula .tula-text').forEach(p => p.classList.remove('show'));
+        document.querySelectorAll('#tula .p-btn').forEach(b => b.classList.remove('active'));
         document.getElementById(id).classList.add('show');
         btn.classList.add('active');
     }
